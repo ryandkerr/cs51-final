@@ -1,3 +1,4 @@
 # minimax algorithm
 # node is 
-dec minmax(node, depth, max_player)
+def minmax(node, depth, max_player):
+    
