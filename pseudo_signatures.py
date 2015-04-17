@@ -33,6 +33,13 @@ def minmax(node, depth, max_player):
 #global variable to determine whose turn it is
 turn = "user"
 
+def next_move:
+	if turn = "user":
+		user_move
+	else:
+		minimax
+
+
 # Prompts user to select a position and recieves an int, which will
 # be passed into get_move
 def prompt_user:
@@ -42,12 +49,13 @@ def prompt_user:
 # Column is an int. If the column is full, return an error. Otherwise,
 # place the piece of the users color in the lowest possible location
 # in that column. Returns new board as an array. Sets turn to the computer.
-def get_move(column):
+def user_move(column):
 	if column = full:
 		print("Error: Column is full")
 	else:
 		Return board with updated piece
 	global turn = "computer"
+	next_move
 
 
 # Checks to see if there are 4 in a row of one color. If there are, it declares the player of that
@@ -63,4 +71,17 @@ def four_in_row(board):
 			prompt_user
 		else
 			minimax 
+
+# Prints the board as an ASCII representation
+def print_board (board):
+	for x in range (0,columns):
+		for y in range (0,rows):
+			if board(x,y) = red:
+				print("r")
+			else if board(x,y) = blue:
+				print("b")
+			else:
+				print("o")
+
+
 
