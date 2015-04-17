@@ -29,22 +29,18 @@ def minmax(node, depth, max_player):
             best_possibility = min(best_possibility, value)
 
         return best_possibility
+     global turn = "user"
+     four_in_row best_possibility
 
 #global variable to determine whose turn it is
 turn = "user"
 
-def next_move:
-	if turn = "user":
-		user_move
-	else:
-		minimax
-
-
 # Prompts user to select a position and recieves an int, which will
-# be passed into get_move
+# be passed into user_move
 def prompt_user:
+	print_board
 	print("Select your move: ")
-	Get int 
+	user_move (Get int)
 
 # Column is an int. If the column is full, return an error. Otherwise,
 # place the piece of the users color in the lowest possible location
@@ -52,15 +48,19 @@ def prompt_user:
 def user_move(column):
 	if column = full:
 		print("Error: Column is full")
+		prompt_user
 	else:
-		Return board with updated piece
-	global turn = "computer"
-	next_move
+		return updated_board
+		if global turn = "computer":
+	four_in_row updated_board
+	
+	
+	
 
 
 # Checks to see if there are 4 in a row of one color. If there are, it declares the player of that
 # color then winner. Otherwise, it will either prompt the user for his move if it's the users turn,
-# or it will run the minimax algorithm on the current board if it's the computer's turn.
+# or it will run the minimax algorithm on the current board if it's the computer's turn. 
 def four_in_row(board):
 	if (4 blue in a row horrizontally) || (4 blue in a row vertically) || (4 blue in a row diagonally):
 		print("blue wins")
