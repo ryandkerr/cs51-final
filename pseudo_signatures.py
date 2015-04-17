@@ -10,7 +10,7 @@ def minmax(node, depth, max_player):
     if (depth = 0) or (node is terminal node):
         return heuristic value of node
 
-    if maximizing player:
+    if max_player:
         # set best option to low value as default
         best_possibility = -1000
 
@@ -29,6 +29,37 @@ def minmax(node, depth, max_player):
             best_possibility = min(best_possibility, value)
 
         return best_possibility
+
+# ALPHABETA PRUNING ALGORITHM
+# node is a node on the minimax tree
+# depth is an int for how many brnaches down the tree we are
+# max_player is a bool saying wether or not node is a max_player turn
+# a is a node that represents max's best choice from a given node
+# b is a node that represents min's best choice from a given node
+#
+# returns heuristic value node, alpha node from max, or beta node from min
+def abprune(node, depth, a, b, max_player):
+    if (depth = 0) or (node is terminal node):
+        return heuristic value of node
+
+    # returns the best choice for max player
+    if max_player:
+        for child in node children
+            a = max(a, abprune(child, depth - 1, a, b, False))
+            if a >= b:
+                finish pruning
+
+        return a
+    # returns best choice for min player
+    else:
+        for child in node children
+            b = min(b, abprune(child, depth - 1, a, b, True))
+            if b <= a:
+                finish pruning
+
+        return b
+
+
 
 #global variable to determine whose turn it is
 turn = "user"
