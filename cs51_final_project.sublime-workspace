@@ -1,0 +1,582 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"content",
+				"content"
+			],
+			[
+				"slider",
+				"slider-time"
+			],
+			[
+				"select",
+				"selectAll"
+			],
+			[
+				"co",
+				"continent"
+			],
+			[
+				"countries",
+				"countries"
+			],
+			[
+				"track",
+				"track_dir"
+			],
+			[
+				"nested",
+				"nested_rows"
+			],
+			[
+				"agg",
+				"agg_continent"
+			],
+			[
+				"abbre",
+				"abbreviate"
+			],
+			[
+				"vals",
+				"vals"
+			],
+			[
+				"def",
+				"def	Function"
+			],
+			[
+				"most",
+				"most"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"background-",
+				"background-image"
+			],
+			[
+				"resi",
+				"resizeFactor"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 53,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 490.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Enable Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Pack",
+				"Package Control: Install Package"
+			],
+			[
+				"j",
+				"Set Syntax: JavaScript"
+			]
+		],
+		"width": 637.0
+	},
+	"console":
+	{
+		"height": 162.0,
+		"history":
+		[
+			"Space Gray",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw3/index.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/cs171-final/choro_ref.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/cs171-final/data/us_states_small.json",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/cs171-final/data/elec08_12.json",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/cs171-final/README.md",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/cs171-final/styles.css",
+		"/c/Users/Ryan/OneDrive/Harvard/CS171/cs171-final/index.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/cs171-final/data/us_states.json",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/cs171-final/elec08_12.json",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw2/data/countries_1995_2012.json",
+		"/c/Users/Ryan/virtualenvs/pelican/ryandkerr.github.io/pelicanconf.py",
+		"/c/Users/Ryan/virtualenvs/pelican/ryandkerr.github.io/content/test_article.md",
+		"/C/Users/Ryan/Downloads/section7_soln.ml",
+		"/C/Users/Ryan/Downloads/section7.ml",
+		"/c/Users/Ryan/rk_github/index.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section6/material/final/js/volumevis.js",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw3/README.md",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw3/5_design.md",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section6/material/final/index.html",
+		"/c/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw3/2_Tasks.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw3/js/countvis.js",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw3/js/agevis.js",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw3/data/perDayData.json",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw3/answers.md",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw3/js/designpriovis.js",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw3/designindex.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section6/material/final/js/typevis.js",
+		"/C/Users/Ryan/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Ryan/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section6/material/start/index.html",
+		"/C/Users/Ryan/Crimson_tech/Vagrantfile",
+		"/C/Users/Ryan/crim_tech/crimsononline/crimsononline/urls.py",
+		"/C/Users/Ryan/crim_tech/crimsononline/crimsononline/content/views.py",
+		"/C/Users/Ryan/crim_tech/Midpoint Part 1 Questions",
+		"/c/Users/Ryan/crim_tech/crimsononline/Vagrantfile",
+		"/C/Users/Ryan/Crimson_tech/README.txt",
+		"/C/Users/Ryan/Downloads/section5_soln.ml",
+		"/C/Users/Ryan/crim_tech/crimsononline/crimsononline/local_settings.py",
+		"/c/Users/Ryan/crim_tech/Vagrantfile",
+		"/c/Users/Ryan/Crimson_tech/Vagrantfile",
+		"/c/Users/Ryan/Crimson_tech/Vagrantfule",
+		"/C/Users/Ryan/Downloads/modules.ml",
+		"/C/Users/Ryan/Crimson_tech/newspaper/content/models.py",
+		"/C/Users/Ryan/Crimson_tech/newspaper/newspaper/settings.py",
+		"/c/Users/Ryan/virtualenvs/README.txt",
+		"/C/Users/Ryan/OneDrive/Harvard/Crimson_Tech/Psets/README.txt",
+		"/C/Users/Ryan/OneDrive/Harvard/Crimson_Tech/Psets/hello_test.py",
+		"/C/Users/Ryan/Downloads/section5.ml",
+		"/C/Users/Ryan/Downloads/section5_soln (1).ml",
+		"/C/Users/Ryan/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Ryan/virtualenvs/crimson_comp/newspaper/newspaper/settings.py",
+		"/C/Users/Ryan/virtualenvs/crimson_comp/newspaper/manage.py",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw2/graph_example.html",
+		"/C/Users/Ryan/Documents/Sublime_Projects/CS171_Pset2.sublime-project",
+		"/C/Users/Ryan/Documents/Sublime_Projects/CS171_Pset2.sublime-workspace",
+		"/C/Users/Ryan/Dropbox/CustomCatan/public/js/genNoDubs.js",
+		"/C/Users/Ryan/Dropbox/CustomCatan/public/css/primary.css",
+		"/C/Users/Ryan/AppData/Local/Temp/fz3temp-1/howto.php",
+		"/C/Users/Ryan/Dropbox/CustomCatan/index.php",
+		"/C/Users/Ryan/Dropbox/CustomCatan/index_old.php",
+		"/C/Users/Ryan/AppData/Local/Temp/fz3temp-1/index_broken.php",
+		"/C/Users/Ryan/AppData/Local/Temp/fz3temp-1/index.php",
+		"/C/Users/Ryan/Dropbox/CustomCatan/internal_error.html",
+		"/C/Users/Ryan/Dropbox/CustomCatan/missing.html",
+		"/C/Users/Ryan/Dropbox/CustomCatan/howto.php",
+		"/C/Users/Ryan/Dropbox/CustomCatan/forbidden.html",
+		"/C/Users/Ryan/Dropbox/CustomCatan/failed_auth.html",
+		"/C/Users/Ryan/Dropbox/CustomCatan/contact.php",
+		"/C/Users/Ryan/Dropbox/CustomCatan/about.php",
+		"/C/Users/Ryan/Dropbox/CustomCatan/index_boot.php",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw2/graph.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section3/material/nodes.html",
+		"/C/Users/Ryan/Downloads/index (2).php",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section3/material/miserables.json",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section3/material/graph-final.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section3/material/circles.html",
+		"/C/Users/Ryan/virtualenvs/crimson_comp/Assignment 2/loadcontent.py",
+		"/C/Users/Ryan/virtualenvs/crimson_comp/Assignment 2/models.py",
+		"/C/Users/Ryan/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Ryan/OneDrive/Harvard/Crimson_Tech/Assignment 2/models.py",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw2/answers.md",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw2/design.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw2/design.md",
+		"/C/WINDOWS/system32/http",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section2/material/chart-final.html",
+		"//RYAN/Users/Ryan/virtualenvs/crimson_comp/Scripts/activate",
+		"//RYAN/Users/Ryan/virtualenvs/crimson_comp/Scripts/activate_this.py",
+		"/C/Users/Ryan/OneDrive/Harvard/Crimson_Tech/Code/pset1.py",
+		"/C/Users/Ryan/.bashsrc",
+		"/c/Users/Ryan/.bash_profile",
+		"/C/Users/Ryan/.bashrc",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw1/barchart.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw1/answers.md",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw1/table.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw1/data/countries_1995_2012.json",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw2/data/countries_2012.json",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw1/data/countries_2012.json",
+		"/C/Users/Ryan/OneDrive/Harvard/Crimson_Tech/pset1.py",
+		"/C/Users/Ryan/AppData/Roaming/Sublime Text 3/Packages/User/bh_core.sublime-settings",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section2/material/chart-interactive.html",
+		"/C/Users/Ryan/AppData/Roaming/Sublime Text 3/Packages/BracketHighlighter/bh_core.sublime-settings",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw1/table_example.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section2/material/not-so-bare.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section2/material/chart.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section2/material/bare.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_06/10_drawing_svgs_circles.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_06/11_drawing_svgs_color.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section1/material/style.css",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/hw0/hw0.txt.txt",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/section1/material/basic.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/git_upload_steps.txt.txt",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/2015-cs171-homework/README.md",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_06/06_power_of_data_random.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_06/05_power_of_data_more_points.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_06/04_power_of_data.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_06/01_drawing_divs.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_06/04",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_05/01_empty_page_template.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_05/04_creating_paragraphs.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_05/05_creating_paragraphs_text.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_04/index.html.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/Toy project/index.html",
+		"/C/Users/Ryan/OneDrive/Harvard/CS171/d3-book-master/chapter_04/01_empty_page_template.html",
+		"/C/Users/Ryan/Dropbox/New folder/index.php",
+		"/C/Users/Ryan/AppData/Local/Temp/fz3temp-1/main.css",
+		"/C/Users/Ryan/AppData/Local/Temp/fz3temp-1/default1.php",
+		"/C/Users/Ryan/Dropbox/New folder/public/js/genNoTrip68.js",
+		"/C/Users/Ryan/Dropbox/New folder/public/js/genNoSixEight.js"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"path",
+			"project",
+			"style",
+			"new_event",
+			"module",
+			"priorities[i]",
+			"priorities",
+			"res",
+			"debug",
+			"data",
+			"trigger",
+			"Trigger",
+			"trigger",
+			"brush",
+			"slider",
+			"getinner",
+			"svg",
+			"debug",
+			"volumevis",
+			"volumevis.",
+			"area",
+			"debug",
+			"display",
+			"debugger;",
+			"perd",
+			"alld",
+			"VolumeVis",
+			"tag ",
+			"style",
+			"mainbutton",
+			"warning",
+			"mainbutton",
+			"c",
+			"#",
+			"panel",
+			"right",
+			"mainbutton",
+			"categ",
+			"caret",
+			"spaces",
+			"indent",
+			"caret",
+			"cat",
+			"circle",
+			"\"\",",
+			"font",
+			"auto",
+			"United States",
+			".select",
+			"id",
+			"name",
+			"data",
+			"countre",
+			"selected",
+			"list_most_least",
+			"curly",
+			"window",
+			"ctrl+l",
+			"+l",
+			"console.log",
+			"console.log(",
+			"newcells",
+			"newro",
+			"rect",
+			"row",
+			"selected",
+			"console.log",
+			"i",
+			"new_data",
+			"key",
+			"enter",
+			"curly",
+			"brack",
+			"fill",
+			"class",
+			"type",
+			"input",
+			"Americas",
+			"DDDDDD",
+			"\"#",
+			"E6E6E6",
+			"a['name'] - b['name']",
+			"a",
+			"name",
+			"header",
+			"name",
+			"columns",
+			"0",
+			"data",
+			"ruler",
+			"noDubResource",
+			"is",
+			"this is a comment",
+			"this",
+			"if"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"noDubResource"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 53,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "cs51_final_project.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"soln",
+				"C:\\Users\\Ryan\\Downloads\\section5_soln (1).ml"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 108.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
