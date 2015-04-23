@@ -1,9 +1,15 @@
+# board_functions.py
+# Connect Four MiniMax AI
+# CS 51 Final Project
+# Evan Sandhoefner, Ryan Kerr, Milan Ravenell, Matthew Tesfalul
+# classes and functions about our board data structure
+
 class GameBoard:
-    def __init__ (self):
+    def __init__ (self, board):
     self.rows = 7
     self.columns = 5
 
-    Board = 
+    self.board = board
 
     def horizontal (state):
         for y in range(columns):
