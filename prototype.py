@@ -33,8 +33,7 @@ def min_player(board, depth):
 
     else:
         next_moves = board.possible_moves() 
-        worst_move = next_moves[0]
-        worst score = float("inf")
+        min_score = float("inf")
 
         # if end of tree evaluate scores
         for move in next_moves:
@@ -47,10 +46,38 @@ def min_player(board, depth):
             else:
                 board_score = max_player(new_board, depth - 1)
 
-            if board_score < worst_score:
-                worst_score = board_score
+            if board_score < min_score:
+                min_score = board_score
 
-        return worst_score
+        return min_score
+
+
+# max player picks max move and outputs SCORE
+def max_player(board, depth):
+    if board.is_terminal():
+    
+        # this needs to say wether the terminal state is a draw, win, loss
+        return evaluate(board)
+
+    else:
+        next_moves = board.possible_moves() 
+        max_score = float("-inf")
+
+        # if end of tree, evaluate scores
+        for move in next_moves:
+            new_board = board.go_next(move)
+
+            board_score = 0
+
+            if depth == 0:
+                board_score = evaluate(new_board)
+            else:
+                board_score = min_player(new_board, depth - 1)
+
+            if board_score > max_score:
+                max_score = board_score
+
+        return max_score
 
 
 # outside of minimax call
