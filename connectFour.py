@@ -67,16 +67,13 @@ def move():
 
 # sleep, assign R to first available cell, print board, call MOVE
 def moveAI():
+  global board
   print "\nRondo is thinking...."
   sleep(1)
-  for column in range(7):
-    for row in range(6):
-      if board[column][row] == "*":
-        board[column][row] = "R"
-        print "Rondo's move:"
-        printBoard()
-        move()
-        break
+  board = go_next(board, 2, "R")
+  print "Rondo's move:"
+  printBoard()
+  move()
 
 # take user column input, alter board in memory, print board, call MOVE
 def movePlayer():

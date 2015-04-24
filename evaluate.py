@@ -4,6 +4,8 @@
 # CS51 final project
 # file that holds the evaluate function
 
+from board_functions import *
+
 # evaluate takes a board and a player's color and outputs a SCORE based on 
 # how good that board is for max payer. High score means good for max player.
 def evaluate(board):

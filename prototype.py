@@ -4,6 +4,9 @@
 # CS51 final project
 # Prototype file for minimax algorithm
 
+from board_functions import *
+from evaluate import *
+
 # minimax takes a board and a specified depth and outputs the best MOVE
 def minimax(board, depth):
     
