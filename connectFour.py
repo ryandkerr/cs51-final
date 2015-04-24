@@ -6,9 +6,9 @@
 
 from time import sleep
 from sys import exit
-import evaluate
-import prototype
-import dummy
+from evaluate import *
+from prototype import *
+from board_functions import *
 
 global playersTurn
 global board
@@ -87,5 +87,3 @@ def printBoard():
     print board[6][row]
 
 init()
-
-dummy()
