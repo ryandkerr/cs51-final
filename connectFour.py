@@ -22,9 +22,10 @@ def init():
   global playersTurn
   print "\nHello! My name is Rondo."
   first = raw_input("Let's play Connect Four! You'll be red (R). "
-                    "Would you like to go first? (y/n):\n")
+                    "Would you like to go first? (y/n):\n").lower()
   while (first != "y") & (first != "n"):
-    first = raw_input("\nSorry, I don't understand! Please type 'y' or 'n':\n")
+    first = raw_input("\nSorry, I don't understand! "
+                      "Please type 'y' or 'n':\n").lower()
   print '\nStarting board:'
   printBoard()
   if first == "n":
