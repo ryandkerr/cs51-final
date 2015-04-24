@@ -20,12 +20,14 @@ gameOver = False
 
 def init():
   global playersTurn
-  print "\nHello! My name is Rondo."
-  first = raw_input("Let's play Connect Four! You'll be red (R). "
-                    "Would you like to go first? (y/n):\n").lower()
-  while (first != "y") & (first != "n"):
+  print "\nHello! My name is Rondo. Let's play Connect Four!"
+  first = raw_input("You'll be red (R). You can enter 'q' at any prompt "
+                    "to quit.\nWould you like to go first? (y/n):\n").lower()
+  while (first != "y") & (first != "n") & (first != "q"):
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
+  if first == "q":
+    exit()
   print '\nStarting board:'
   printBoard()
   if first == "n":
@@ -47,20 +49,22 @@ def move():
 
 def moveAI():
   print "\nRondo is thinking...."
-  sleep(2)
+  sleep(1.5)
   for column in range(7):
     for row in range(6):
       if board[column][row] == "*":
-        board[column][row] = "R"
+        board[column][row] = "B"
         print "Rondo's move:"
         printBoard()
         move()
         break
 
 def movePlayer():
-  column = raw_input("\nYour turn! Please choose a column (0-6):\n")
-  if column not in ['0','1','2','3','4','5','6']:
+  column = raw_input("\nYour turn! Please choose a column (0-6):\n").lower()
+  if column not in ['q','0','1','2','3','4','5','6']:
     movePlayer()
+  elif column == 'q':
+    exit()
   else:
     column = int(column)
     for row in range(6):
