@@ -47,7 +47,7 @@ def move():
 
 def moveAI():
   print "\nRondo is thinking...."
-  sleep(3)
+  sleep(2)
   for column in range(7):
     for row in range(6):
       if board[column][row] == "*":
