@@ -21,7 +21,7 @@ gameOver = False
 def init():
   global playersTurn
   print "\nHello! My name is Rondo. Let's play Connect Four!"
-  first = raw_input("You'll be red (R). You can enter 'q' at any prompt "
+  first = raw_input("You'll be yellow (Y). You can enter 'q' at any prompt "
                     "to quit.\nWould you like to go first? (y/n):\n").lower()
   while (first != "y") & (first != "n") & (first != "q"):
     first = raw_input("\nSorry, I don't understand! "
@@ -53,7 +53,7 @@ def moveAI():
   for column in range(7):
     for row in range(6):
       if board[column][row] == "*":
-        board[column][row] = "B"
+        board[column][row] = "R"
         print "Rondo's move:"
         printBoard()
         move()
@@ -69,7 +69,7 @@ def movePlayer():
     column = int(column)
     for row in range(6):
       if board[column][row] == "*":
-        board[column][row] = "R"
+        board[column][row] = "Y"
         print "\nYour move:"
         printBoard()
         move()
