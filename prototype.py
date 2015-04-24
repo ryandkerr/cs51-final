@@ -1,4 +1,5 @@
 # prototype.py
+# Connect Four MiniMax AI
 # Ryan Kerr, Milan Ravenell, Matt Tesfalul, Evan Sahdhoefner
 # CS51 final project
 # Prototype file for minimax algorithm
