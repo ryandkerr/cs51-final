@@ -6,39 +6,57 @@
 global playersTurn
 global board
 
+a = ["*", "*", "*", "*", "*", "*", "*"]
+b = ["*", "*", "*", "*", "*", "*", "*"]
+c = ["*", "*", "*", "*", "*", "*", "*"]
+d = ["*", "*", "*", "*", "*", "*", "*"]
+e = ["*", "*", "*", "*", "*", "*", "*"]
+f = ["*", "*", "*", "*", "*", "*", "*"]
+
+board = [a, b, c, d, e, f]
+
+rowNames = ["a", "b", "c", "d", "e", "f"]
+
+gameOver = False
+
 first = raw_input("Let's play Connect Four! "
                     "Would you like to go first? (y/n):\n")
 
 #easy/med/hard modes
 
-gameOver = False
-
 def init(first):
+  global playersTurn
   if (first != "y") & (first != "n"):
     first = raw_input("Sorry, I don't understand! Please type 'y' or 'n':\n")
     if (first != "y") and (first != "n"):
       init(first)
   print "Okay, you'll be red (R).\n"
-  printBoard(board)
+  printBoard()
+  if first == "n":
+    playersTurn = False
+  else:
+    playersTurn = True
+  move()
 
-def move(playersTurn):
+def move():
+  global playersTurn
   if gameOver:
     print "Game over! Somebody wins!"
   elif playersTurn:
     playersTurn = False
-    movePlayer(playersTurn)
+    movePlayer()
   else:
     playersTurn = True
-    moveAI(playersTurn)
+    moveAI()
 
 def movePlayerHelp():
-  printBoard(board)
-  move(False)
+  printBoard()
+  move()
 
-def movePlayer(playersTurn):
+def movePlayer():
   cell = raw_input("Please choose a column (0-6):\n")
   if cell not in ['0','1','2','3','4','5','6']:
-    movePlayer(False)
+    movePlayer()
   else:
     cell = int(cell)
     if board[5][cell] == "*":
@@ -60,24 +78,13 @@ def movePlayer(playersTurn):
       board[0][cell] = "R"
       movePlayerHelp()
     else:
-      movePlayer(False)
+      movePlayer()
 
-def moveAI(playersTurn):
+def moveAI():
   print "AI's move"
-  move(playersTurn)
+  move()
 
-a = ["*", "*", "*", "*", "*", "*", "*"]
-b = ["*", "*", "*", "*", "*", "*", "*"]
-c = ["*", "*", "*", "*", "*", "*", "*"]
-d = ["*", "*", "*", "*", "*", "*", "*"]
-e = ["*", "*", "*", "*", "*", "*", "*"]
-f = ["*", "*", "*", "*", "*", "*", "*"]
-
-board = [a, b, c, d, e, f]
-
-rowNames = ["a", "b", "c", "d", "e", "f"]
-
-def printBoard(board):
+def printBoard():
   print "  0 1 2 3 4 5 6"
   numRow = 0
   for row in board:
@@ -86,10 +93,3 @@ def printBoard(board):
     numRow += 1
 
 init(first)
-
-if first == "n":
-  playersTurn = False
-else:
-  playersTurn = True
-
-move(playersTurn)
