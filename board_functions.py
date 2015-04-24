@@ -35,7 +35,7 @@ rows = 6
 # 	in_row = 0
 # 	while(x <= rows and y <= columns):
 # 		if (board[x][y] == state):
-# 			in_rows = in_rows + 1
+# 			in_row = in_row + 1
 # 			if(in_row == 4):
 # 				return True
 # 			x = x + 1
@@ -50,7 +50,7 @@ rows = 6
 # 	in_row = 0
 # 	while(x >= 0 and y >= 0):
 # 		if (board[x][y] == state):
-# 			in_rows = in_rows + 1
+# 			in_row = in_row + 1
 # 			if(in_row == 4):
 # 				return True
 # 			x = x - 1
@@ -109,7 +109,7 @@ def diag_upright (board, state,x,y, length):
     in_row = 0
     while(x <= rows and y <= columns):
         if (board[x][y] == state):
-            in_rows = in_rows + 1
+            in_row = in_row + 1
             if(in_row == length):
                 return True
             x = x + 1
@@ -124,7 +124,7 @@ def diag_downright (board, state,x,y, length):
     in_row = 0
     while(x >= 0 and y >= 0):
         if (board[x][y] == state):
-            in_rows = in_rows + 1
+            in_row = in_row + 1
             if(in_row == length):
                 return True
             x = x - 1
@@ -195,7 +195,8 @@ def go_next (board, move, state):
 # TESTING
 
 board0 = [["0" for y in range(columns)] for x in range(rows)]
-
+# print board0
+print board0[5][6]
 
 board1 = board0
 for x in range(rows):
@@ -205,7 +206,7 @@ for x in range(rows):
 		else:
 			board1[x][y] = "b"
 
-
+# print board0
 
 
 board2 = board0
