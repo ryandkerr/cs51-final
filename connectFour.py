@@ -7,26 +7,16 @@
 global playersTurn
 global board
 
-a = ["*", "*", "*", "*", "*", "*", "*"]
-b = ["*", "*", "*", "*", "*", "*", "*"]
-c = ["*", "*", "*", "*", "*", "*", "*"]
-d = ["*", "*", "*", "*", "*", "*", "*"]
-e = ["*", "*", "*", "*", "*", "*", "*"]
-f = ["*", "*", "*", "*", "*", "*", "*"]
-
-board = [a, b, c, d, e, f]
-
-rowNames = ["a", "b", "c", "d", "e", "f"]
+board = [['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6]
 
 gameOver = False
 
-first = raw_input("Let's play Connect Four! "
-                    "Would you like to go first? (y/n):\n")
-
 #easy/med/hard modes
 
-def init(first):
+def init():
   global playersTurn
+  first = raw_input("Let's play Connect Four! "
+                    "Would you like to go first? (y/n):\n")
   if (first != "y") & (first != "n"):
     first = raw_input("Sorry, I don't understand! Please type 'y' or 'n':\n")
     if (first != "y") and (first != "n"):
@@ -55,29 +45,16 @@ def movePlayerHelp():
   move()
 
 def movePlayer():
-  cell = raw_input("Please choose a column (0-6):\n")
-  if cell not in ['0','1','2','3','4','5','6']:
+  column = raw_input("Please choose a column (0-6):\n")
+  if column not in ['0','1','2','3','4','5','6']:
     movePlayer()
   else:
-    cell = int(cell)
-    if board[5][cell] == "*":
-      board[5][cell] = "R"
-      movePlayerHelp() 
-    elif board[4][cell] == "*":
-      board[4][cell] = "R"
-      movePlayerHelp()
-    elif board[3][cell] == "*":
-      board[3][cell] = "R"
-      movePlayerHelp()
-    elif board[2][cell] == "*":
-      board[2][cell] = "R"
-      movePlayerHelp()
-    elif board[1][cell] == "*":
-      board[1][cell] = "R"
-      movePlayerHelp()
-    elif board[0][cell] == "*":
-      board[0][cell] = "R"
-      movePlayerHelp()
+    column = int(column)
+    for row in [0,1,2,3,4,5]:
+      if board[column][row] == "*":
+        board[column][row] = "R"
+        movePlayerHelp()
+        break
     else:
       movePlayer()
 
@@ -86,11 +63,10 @@ def moveAI():
   move()
 
 def printBoard():
-  print "  0 1 2 3 4 5 6"
-  numRow = 0
-  for row in board:
-    print (rowNames[numRow] + " " + row[0] + " " + row[1] + " " + row[2] + " " +
-           row[3] + " " + row[4] + " " + row[5] + " " + row[6])
-    numRow += 1
+  print "0 1 2 3 4 5 6"
+  for row in [5,4,3,2,1,0]:
+    for column in range(6):
+      print board[column][row],
+    print board[6][row]
 
-init(first)
+init()
