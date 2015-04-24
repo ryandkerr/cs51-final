@@ -183,7 +183,7 @@ moves1 = possible_moves(board0)
 moves2 = possible_moves(hor_board)
 go_board = go_next(insert_board, 3, "R")
 if (is_terminal(go_board, "R")):
-    print "succes6"
+    print "success6"
 
 def dummy():
     print "hey!"
