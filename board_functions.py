@@ -181,6 +181,8 @@ go_board = go_next(insert_board, 3, "R")
 if (is_terminal(go_board, "R")):
     print "succes6"
 
+def dummy():
+    print "hey!"
 
 #class Piece:
 #   def __init__ (self,x_loc,y_loc,state):

@@ -6,6 +6,9 @@
 
 from time import sleep
 from sys import exit
+import evaluate
+import prototype
+import dummy
 
 global playersTurn
 global board
@@ -16,7 +19,6 @@ gameOver = False
 
 # to be implemented:
 # easy/med/hard modes
-# quit
 
 def init():
   global playersTurn
@@ -49,7 +51,7 @@ def move():
 
 def moveAI():
   print "\nRondo is thinking...."
-  sleep(1.5)
+  sleep(1)
   for column in range(7):
     for row in range(6):
       if board[column][row] == "*":
@@ -85,3 +87,5 @@ def printBoard():
     print board[6][row]
 
 init()
+
+dummy()
