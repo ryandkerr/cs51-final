@@ -6,36 +6,36 @@
 columns = 7
 rows = 6
 
-def horizontal (board, state):
+def horizontal (board, state, length):
     for y in range(columns):
         in_row = 0
         for x in range(rows):
             if (board[x][y] == state):
                 in_row = in_row + 1
-                if (in_row == 4):
+                if (in_row == length):
                     return True
             else:
                 in_row = 0
     return False
 
-def vertical (board, state):
+def vertical (board, state, length):
     for x in range(rows):
         in_row = 0
         for y in range(columns):
             if (board[x][y] == state):
                 in_row = in_row + 1
-                if (in_row == 4):
+                if (in_row == length):
                     return True
             else:
                 in_row = 0
     return False
 
-def diag_upright (board, state,x,y):
+def diag_upright (board, state,x,y, length):
     in_row = 0
     while(x <= rows and y <= columns):
         if (board[x][y] == state):
             in_rows = in_rows + 1
-            if(in_row == 4):
+            if(in_row == length):
                 return True
             x = x + 1
             y = y + 1
@@ -45,12 +45,12 @@ def diag_upright (board, state,x,y):
             y = y + 1
     return False
 
-def diag_downright (board, state,x,y):
+def diag_downright (board, state,x,y, length):
     in_row = 0
     while(x >= 0 and y >= 0):
         if (board[x][y] == state):
             in_rows = in_rows + 1
-            if(in_row == 4):
+            if(in_row == length):
                 return True
             x = x - 1
             y = y - 1
@@ -60,10 +60,10 @@ def diag_downright (board, state,x,y):
             y = y - 1
     return False 
 
-def diagonal (board, state):
+def diagonal (board, state, length):
     for x in range(rows):
         for y in range(columns):
-                if diag_upright(board, state, x, y) or diag_downright(board, state,x,y) :
+                if diag_upright(board, state, x, y, length) or diag_downright(board, state,x,y, length) :
                     return True
     return False
 
@@ -75,13 +75,13 @@ def full (board):
     return True
 
 def is_terminal (board, turn):
-    if (horizontal(board, turn) or vertical(board, turn) or diagonal(board, turn) or full(board)):
+    if (horizontal(board, turn, 4) or vertical(board, turn, 4) or diagonal(board, turn, 4) or full(board)):
         return True
     else:
         return False
 
 def game_won (board, turn):
-    if (horizontal(board, turn) or vertical(board, turn) or diagonal(board, turn)):
+    if (horizontal(board, turn, 4) or vertical(board, turn, 4) or diagonal(board, turn, 4)):
         return True
     else:
         return False
