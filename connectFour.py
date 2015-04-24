@@ -11,17 +11,14 @@ board = [['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*']
 
 gameOver = False
 
-#easy/med/hard modes
+# easy/med/hard modes
 
 def init():
   global playersTurn
-  first = raw_input("Let's play Connect Four! "
+  first = raw_input("Let's play Connect Four! You'll be red (R). "
                     "Would you like to go first? (y/n):\n")
-  if (first != "y") & (first != "n"):
+  while (first != "y") & (first != "n"):
     first = raw_input("Sorry, I don't understand! Please type 'y' or 'n':\n")
-    if (first != "y") and (first != "n"):
-      init(first)
-  print "Okay, you'll be red (R).\n"
   printBoard()
   if first == "n":
     playersTurn = False
