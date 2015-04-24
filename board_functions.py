@@ -29,7 +29,7 @@ def vertical (board, state):
 
 def diag_upright (board, state,x,y):
 	in_row = 0
-	while(x <= rows && y <= columns):
+	while(x <= rows and y <= columns):
 		if (board[x][y] == state):
 			in_rows = in_rows + 1
 			if(in_row == 4):
@@ -44,7 +44,7 @@ def diag_upright (board, state,x,y):
 
 def diag_downright (board, state,x,y):
 	in_row = 0
-	while(x >= 0 && y >= 0):
+	while(x >= 0 and y >= 0):
 		if (board[x][y] == state):
 			in_rows = in_rows + 1
 			if(in_row == 4):
@@ -95,8 +95,8 @@ def possible_moves (board):
 
 def go_next (board, move, state):
 	for x in range(rows):
-		if(board.[x][move] == "empty"):
-			board.[x][move] = state
+		if(board[x][move] == "empty"):
+			board[x][move] = state
 			return board
 	print "Invalid move\n"
 
