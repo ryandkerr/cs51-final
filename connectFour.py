@@ -40,9 +40,14 @@ def move():
     playersTurn = True
     moveAI()
 
-def movePlayerHelp():
-  printBoard()
-  move()
+def moveAI():
+  for column in range(7):
+    for row in range(6):
+      if board[column][row] == "*":
+        board[column][row] = "R"
+        printBoard()
+        move()
+        break
 
 def movePlayer():
   column = raw_input("Please choose a column (0-6):\n")
@@ -50,19 +55,17 @@ def movePlayer():
     movePlayer()
   else:
     column = int(column)
-    for row in [0,1,2,3,4,5]:
+    for row in range(6):
       if board[column][row] == "*":
         board[column][row] = "R"
-        movePlayerHelp()
+        printBoard()
+        move()
         break
     else:
       movePlayer()
 
-def moveAI():
-  print "AI's move"
-  move()
-
 def printBoard():
+  print '\n'
   print "0 1 2 3 4 5 6"
   for row in [5,4,3,2,1,0]:
     for column in range(6):
