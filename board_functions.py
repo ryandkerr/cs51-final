@@ -1,3 +1,11 @@
+# board_functions.py
+# Connect Four MiniMax AI
+# Ryan Kerr, Milan Ravenell, Matt Tesfalul, Evan Sahdhoefner
+# CS51 final project
+# file holds all functions related to the board
+
+
+
 #class GameBoard:
 #   def __init__ (self):
 #   self.ROWS = 7
