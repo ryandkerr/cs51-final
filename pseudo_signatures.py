@@ -1,3 +1,9 @@
+# pseudo_signatures.py
+# Connect Four MiniMax AI
+# Ryan Kerr, Milan Ravenell, Matt Tesfalul, Evan Sahdhoefner
+# CS51 final project
+# Project function outline
+
 # MINIMAX ALGORITHM
 # node is 
 # depth is int for how many branches down the tree we are

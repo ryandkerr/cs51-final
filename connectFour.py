@@ -1,3 +1,4 @@
+# connectFour.py
 # Connect Four MiniMax AI
 # CS 51 Final Project
 # Evan Sandhoefner, Ryan Kerr, Milan Ravenell, Matthew Tesfalul
