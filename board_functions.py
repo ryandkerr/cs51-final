@@ -123,14 +123,13 @@ board0 = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
 
 
 hor_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
-print (hor_board)
+
 for y in range(ROWS):
     for x in range(COLUMNS):
         if (y%2 == 0):
             hor_board[x][y] = "R"
         else:
             hor_board[x][y] = "Y"
-    print y
 
 
 vert_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
@@ -182,10 +181,7 @@ if (is_terminal(hor_board, "R")):
     print "success5"
 moves1 = possible_moves(board0)
 moves2 = possible_moves(hor_board)
-print (moves1)
-print (moves2)
 go_board = go_next(insert_board, 3, "R")
-#print (go_board)
 if (is_terminal(go_board, "R")):
     print "succes6"
 
