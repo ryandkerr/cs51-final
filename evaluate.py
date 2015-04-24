@@ -13,15 +13,15 @@ def evaluate(board):
     
     # here "b" represents the computer/MAX player. If max player has won,
     # we return high score
-    if game_won(board, "b"):
+    if game_won(board, "R"):
         return float("inf")
-    elif game_won(board, "r"):
+    elif game_won(board, "Y"):
         return float("-inf")
     elif full(board):
         return 0
     else:
         # here we define heuristics for good board
-        if in_row(board, "r", 3):
+        if in_row(board, "Y", 3):
             return -3
         else:
             return 1 
