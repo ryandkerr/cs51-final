@@ -24,9 +24,6 @@ global board
 board = [['*'] * 6, ['*'] * 6, ['*'] * 6,
          ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6]
 
-# placeholder bool
-gameOver = False
-
 # print intro, ask for first player, print starting board,
 # assign to playersTurn, call MOVE
 def init():
