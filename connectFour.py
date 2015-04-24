@@ -49,8 +49,15 @@ def init():
 # check for gameOver, reassign playersTurn, call moveAI or movePlayer
 def move():
   global playersTurn
-  if gameOver:
-    print "Game over! Somebody wins!"
+  if game_won(board, "R"):
+    print "\nGame over! I win!"
+    exit()
+  elif game_won(board, "Y"):
+    print "\nGame over! You win!"
+    exit()
+  elif full(board):
+    print "\nGame over! It's a tie!"
+    exit()
   elif playersTurn:
     playersTurn = False
     movePlayer()
