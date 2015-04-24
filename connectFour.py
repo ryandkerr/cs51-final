@@ -4,24 +4,34 @@
 # Evan Sandhoefner, Ryan Kerr, Milan Ravenell, Matthew Tesfalul
 # run by typing "python connectfour.py" at command line
 
+# to be implemented:
+# easy/med/hard modes
+
+# import external modules
 from time import sleep
 from sys import exit
+
+# import our scripts
 from evaluate import *
 from prototype import *
 from board_functions import *
 
+# declare global variables
 global playersTurn
 global board
 
+#instantiate empty board
 board = [['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6]
 
+# assign to playersTurn (meaningless) to establish global scope
+playersTurn = True
+
+# placeholder bool
 gameOver = False
 
-# to be implemented:
-# easy/med/hard modes
-
+# print intro, ask for first player, print starting board,
+# assign to playersTurn, call MOVE
 def init():
-  global playersTurn
   print "\nHello! My name is Rondo. Let's play Connect Four!"
   first = raw_input("You'll be yellow (Y). You can enter 'q' at any prompt "
                     "to quit.\nWould you like to go first? (y/n):\n").lower()
@@ -38,8 +48,8 @@ def init():
     playersTurn = True
   move()
 
+# check for gameOver, reassign playersTurn, call moveAI or movePlayer
 def move():
-  global playersTurn
   if gameOver:
     print "Game over! Somebody wins!"
   elif playersTurn:
@@ -49,6 +59,7 @@ def move():
     playersTurn = True
     moveAI()
 
+# sleep, assign R to first available cell, print board, call MOVE
 def moveAI():
   print "\nRondo is thinking...."
   sleep(1)
@@ -61,6 +72,7 @@ def moveAI():
         move()
         break
 
+# take user column input, alter board in memory, print board, call MOVE
 def movePlayer():
   column = raw_input("\nYour turn! Please choose a column (0-6):\n").lower()
   if column not in ['q','0','1','2','3','4','5','6']:
