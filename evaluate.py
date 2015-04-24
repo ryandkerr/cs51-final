@@ -11,14 +11,17 @@ def evaluate(board):
     # we need a way to see if cpu won, player won, or draw
     # right now is_term will return True if draw or if that player won
     
-    # here "r" represents the computer/MAX player. If max player has won,
+    # here "b" represents the computer/MAX player. If max player has won,
     # we return high score
-    if game_won(board, "r"):
+    if game_won(board, "b"):
         return float("inf")
-    elif game_won(board, "b"):
+    elif game_won(board, "r"):
         return float("-inf")
     elif full(board):
         return 0
     else:
         # here we define heuristics for good board
-         
+        if in_row(board, "r", 3):
+            return -3
+        else:
+            return 1 

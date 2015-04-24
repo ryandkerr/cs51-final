@@ -86,6 +86,12 @@ def game_won (board, turn):
     else:
         return False
 
+# boolean about wether there are length discs in a row
+def in_row (board, turn, length):
+    if (horizontal(board, turn, length) or vertical(board, turn, length) or diagonal(board, turn, length)):
+        return True
+    else:
+        return False
 
 def possible_moves (board):
     moves = []
