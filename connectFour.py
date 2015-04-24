@@ -23,15 +23,13 @@ global board
 # instantiate empty board
 board = [['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6]
 
-# assign to playersTurn (meaningless) to establish global scope
-playersTurn = True
-
 # placeholder bool
 gameOver = False
 
 # print intro, ask for first player, print starting board,
 # assign to playersTurn, call MOVE
 def init():
+  global playersTurn
   print "\nHello! My name is Rondo. Let's play Connect Four!"
   first = raw_input("You'll be yellow (Y). You can enter 'q' at any prompt "
                     "to quit.\nWould you like to go first? (y/n):\n").lower()
@@ -50,6 +48,7 @@ def init():
 
 # check for gameOver, reassign playersTurn, call moveAI or movePlayer
 def move():
+  global playersTurn
   if gameOver:
     print "Game over! Somebody wins!"
   elif playersTurn:
@@ -91,6 +90,7 @@ def movePlayer():
     else:
       movePlayer()
 
+# print ASCII board to terminal window
 def printBoard():
   print "0 1 2 3 4 5 6"
   for row in [5,4,3,2,1,0]:
