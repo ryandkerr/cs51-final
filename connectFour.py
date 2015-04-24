@@ -21,7 +21,8 @@ global playersTurn
 global board
 
 # instantiate empty board
-board = [['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6]
+board = [['*'] * 6, ['*'] * 6, ['*'] * 6,
+         ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6]
 
 # placeholder bool
 gameOver = False
