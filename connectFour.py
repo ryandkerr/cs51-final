@@ -20,7 +20,7 @@ from board_functions import *
 global playersTurn
 global board
 
-#instantiate empty board
+# instantiate empty board
 board = [['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6]
 
 # assign to playersTurn (meaningless) to establish global scope
