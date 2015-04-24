@@ -109,11 +109,3 @@ def go_next (board, move, state):
 #	self.r_pos = x_loc
 #	self.c_pos = y_loc
 #	self.state = state
-
-#slot = Piece(0,0,"empty")
-#Board = [[slot for x in range(rows)] for y in range(columns)]
-
-#for x in range(rows):
-#	for y in range(columns):
-#		slot = Piece(x,y,"empty")
-#		Matrix[x][y] = spot

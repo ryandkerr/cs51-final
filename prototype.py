@@ -1,3 +1,6 @@
+# prototype.py
+# Ryan Kerr, Milan Ravenell, Matt Tesfalul, Evan Sahdhoefner
+# CS51 final project
 # Prototype file for minimax algorithm
 
 # minimax takes a board and a specified depth and outputs the best MOVE
