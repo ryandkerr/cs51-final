@@ -11,8 +11,17 @@
 #   self.ROWS = 7
 #   self.COLUMNS = 5
 
+# globals
 COLUMNS = 7
 ROWS = 6
+
+# copies board without changing original board
+def copy_board(board):
+    copy = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+    for x in range(COLUMNS):
+        for y in range(ROWS):
+            copy[x][y] = board[x][y]
+    return copy
 
 
 def horizontal (board, state, length):
@@ -110,12 +119,11 @@ def possible_moves (board):
     return moves
 
 def go_next (board, move, state):
-    board1 = board 
+    board1 = copy_board(board) 
     for y in range(ROWS):
         if(board1[move][y] == "*"):
             board1[move][y] = state
             return board1
-    return board
 
 # TESTING
 
@@ -188,19 +196,19 @@ if (is_terminal(go_board, "R")):
 def dummy():
     print "hey!"
 
+
+# testing go_next to see if it changes original
+empty = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+moved = go_next(empty, 1, "R")
+print empty
+print moved
+
+
 #class Piece:
 #   def __init__ (self,x_loc,y_loc,state):
 #   self.r_pos = x_loc
 #   self.c_pos = y_loc
 #   self.state = state
-
-# copies board without changing original board
-def copy_board(board):
-    copy = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
-    for x in range(COLUMNS):
-        for y in range(ROWS):
-            copy[x][y] = board[x][y]
-    return copy
 
 
 # class GameBoard(object):
