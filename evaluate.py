@@ -24,6 +24,6 @@ def evaluate(board):
     else:
         # here we define heuristics for good board
         if in_row(board, "Y", 3):
-            return -3
+            return -10
         else:
-            return 1 
+            return 5

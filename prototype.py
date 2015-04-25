@@ -12,7 +12,7 @@ def minimax(board, depth):
     
     # get array of possible moves 
     next_moves = possible_moves(board)
-    best_move = next_moves[0]
+    best_move = next_moves[3]
     best_score = float("-inf")
     
     # go through all of those boards
@@ -22,7 +22,7 @@ def minimax(board, depth):
         new_board = go_next(board, move, "R")
 
         # call min on that new board
-        board_score = min_player(new_board, depth - 1)
+        board_score = min_player(new_board, depth - 1) + (move % 4)
 
         if board_score > best_score:
             best_score = board_score
