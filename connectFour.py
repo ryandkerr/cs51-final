@@ -68,14 +68,15 @@ def moveAI():
   global board
   print "\nRondo is thinking...."
   sleep(1)
-  for column in range(7):
-    for row in range(6):
-      if board[column][row] == "*":
-        board[column][row] = "B"
-        print "Rondo's move:"
-        printBoard()
-        move()
-        break
+  # for column in range(7):
+  #   for row in range(6):
+  #     if board[column][row] == "*":
+  #       board[column][row] = "B"
+  #        break
+  board = go_next(board, minimax(board, 3), "R")
+  print "Rondo's move:"
+  printBoard()
+  move()
   # we want it to be like below, but needs more debugging
   """board = go_next(board, 2, "R")
   print "Rondo's move:"
