@@ -169,29 +169,29 @@ insert_board[1][0] = "R"
 insert_board[2][0] = "R"
 
 
-if (is_terminal(board0, "R") == False):
-    print "success0"
-if (is_terminal(hor_board, "R")):
-    print "success1"
+if (is_terminal(board0, "R") != False):
+    print "failure0"
+if (is_terminal(hor_board, "R") == False):
+    print "failure0.5"
 if (horizontal(vert_board, "R", 4)):
     print "failure1"
-if (is_terminal(vert_board, "R")):
-   print "success2"
+if (is_terminal(vert_board, "R") == False):
+   print "failure1.5"
 if (vertical(hor_board, "R", 4)):
     print "failure2"
 if (diagonal(vert_board, "R", 4)):
     print "failure3"
-if (is_terminal(diag1_board, "R")):
-    print "success3"
-if (is_terminal(diag2_board, "R")):
-    print "success4"
-if (is_terminal(hor_board, "R")):
-    print "success5"
+if (is_terminal(diag1_board, "R") == False):
+    print "failure3.5"
+if (is_terminal(diag2_board, "R") == False):
+    print "failure4"
+if (is_terminal(hor_board, "R") == False):
+    print "failure5"
 moves1 = possible_moves(board0)
 moves2 = possible_moves(hor_board)
 go_board = go_next(insert_board, 3, "R")
-if (is_terminal(go_board, "R")):
-    print "success6"
+if (is_terminal(go_board, "R") == False):
+    print "failure6"
 
 def dummy():
     print "hey!"
@@ -200,8 +200,6 @@ def dummy():
 # testing go_next to see if it changes original
 empty = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
 moved = go_next(empty, 1, "R")
-print empty
-print moved
 
 
 #class Piece:
