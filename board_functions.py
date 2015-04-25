@@ -193,3 +193,18 @@ def dummy():
 #   self.r_pos = x_loc
 #   self.c_pos = y_loc
 #   self.state = state
+
+# copies board without changing original board
+def copy_board(board):
+    copy = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+    for x in range(COLUMNS):
+        for y in range(ROWS):
+            copy[x][y] = board[x][y]
+    return copy
+
+
+# class GameBoard(object):
+#     def __init__(self, board)
+
+
+
