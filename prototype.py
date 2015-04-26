@@ -12,7 +12,7 @@ def minimax(board, depth):
     
     # get array of possible moves 
     next_moves = possible_moves(board)
-    best_move = next_moves[3]
+    best_move = next_moves[0]
     best_score = float("-inf")
     
     # go through all of those boards
