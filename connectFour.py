@@ -8,8 +8,8 @@
 # easy/med/hard modes
 
 # import external modules
-from time import sleep
-from sys import exit
+import time
+import sys
 
 # import our scripts
 from evaluate import *
@@ -35,7 +35,7 @@ def init():
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
   if first == "q":
-    exit()
+    sys.exit()
   print '\nStarting board:'
   printBoard()
   if first == "n":
@@ -49,13 +49,13 @@ def move():
   global playersTurn
   if game_won(board, "R"):
     print "\nGame over! I win!"
-    exit()
+    sys.exit()
   elif game_won(board, "Y"):
     print "\nGame over! You win!"
-    exit()
+    sys.exit()
   elif full(board):
     print "\nGame over! It's a tie!"
-    exit()
+    sys.exit()
   elif playersTurn:
     playersTurn = False
     movePlayer()
@@ -63,11 +63,11 @@ def move():
     playersTurn = True
     moveAI()
 
-# sleep, assign R to first available cell, print board, call MOVE
+# sleep(?), assign R to first available cell, print board, call MOVE
 def moveAI():
   global board
   print "\nRondo is thinking...."
-  sleep(1)
+  # time.sleep(1)
   board = go_next(board, minimax(board, 3), "R")
   print "Rondo's move:"
   printBoard()
@@ -80,7 +80,7 @@ def movePlayer():
   if column not in ['q','0','1','2','3','4','5','6']:
     movePlayer()
   elif column == 'q':
-    exit()
+    sys.exit()
   else:
     column = int(column)
     for row in range(6):
