@@ -48,16 +48,16 @@ def init():
 def move():
   global playersTurn
   global board
-  for row in range(5):
-    for column in range(6):
-      if board[column][row] == "R":
-        board[column][row] = "r"
-      if board[column][row] == "Y":
-        board[column][row] = "y"
-  if game_won(board, "r"):
+  # for row in range(5):
+  #   for column in range(6):
+  #     if board[column][row] == "R":
+  #       board[column][row] = "r"
+  #     if board[column][row] == "Y":
+  #       board[column][row] = "y"
+  if game_won(board, "R"):
     print "\nGame over! I win!"
     sys.exit()
-  elif game_won(board, "y"):
+  elif game_won(board, "Y"):
     print "\nGame over! You win!"
     sys.exit()
   elif full(board):
