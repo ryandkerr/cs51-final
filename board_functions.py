@@ -73,7 +73,7 @@ def diag_downright (board, state,x,y, length):
             y = y - 1
         else: 
             in_row = 0
-            x = x - 1
+            x = x + 1
             y = y - 1
     return False 
 
