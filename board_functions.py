@@ -23,7 +23,6 @@ def copy_board(board):
             copy[x][y] = board[x][y]
     return copy
 
-
 def horizontal (board, state, length):
     for y in range(ROWS):
         in_row = 0
@@ -79,11 +78,25 @@ def diag_downright (board, state,x,y, length):
     return False 
 
 def diagonal (board, state, length):
-    for y in range(ROWS):
-        for x in range(COLUMNS):
-                if diag_upright(board, state, x, y, length) or diag_downright(board, state,x,y, length) :
-                    return True
+    for y in range(ROWS - 3):
+        if diag_upright(board, state, 0, y, length) :
+            return True
+    for x in range(COLUMNS - 3):
+        if diag_upright(board, state, x, 0, length) :
+            return True
+    for y in range(ROWS - 3, ROWS):
+        if diag_downright(board, state, 0, y, length) :
+            return True
+    for x in range(COLUMNS - 3):
+         if diag_downright(board, state, x, ROWS - 1,  length) :
+            return True
     return False
+
+    # for y in range(ROWS):
+    #     for x in range(COLUMNS):
+    #             if diag_upright(board, state, x, y, length) or diag_downright(board, state,x,y, length) :
+    #                 return True
+    # return False
 
 def full (board):
     for y in range(ROWS):
@@ -126,7 +139,6 @@ def go_next (board, move, state):
             return board1
 
 # TESTING
-
 board0 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 
 
