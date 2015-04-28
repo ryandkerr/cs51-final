@@ -1,15 +1,32 @@
+# board_functions.py
+# Connect Four MiniMax AI
+# Ryan Kerr, Milan Ravenell, Matt Tesfalul, Evan Sahdhoefner
+# CS51 final project
+# file holds all functions related to the board
+
+
+
 #class GameBoard:
 #   def __init__ (self):
-#   self.rows = 7
-#   self.columns = 5
+#   self.ROWS = 7
+#   self.COLUMNS = 5
 
-columns = 7
-rows = 6
+# globals
+COLUMNS = 7
+ROWS = 6
+
+# copies board without changing original board
+def copy_board(board):
+    copy = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+    for x in range(COLUMNS):
+        for y in range(ROWS):
+            copy[x][y] = board[x][y]
+    return copy
 
 def horizontal (board, state, length):
-    for y in range(rows):
+    for y in range(ROWS):
         in_row = 0
-        for x in range(columns):
+        for x in range(COLUMNS):
             if (board[x][y] == state):
                 in_row = in_row + 1
                 if (in_row == length):
@@ -19,9 +36,9 @@ def horizontal (board, state, length):
     return False
 
 def vertical (board, state, length):
-    for x in range(columns):
+    for x in range(COLUMNS):
         in_row = 0
-        for y in range(rows):
+        for y in range(ROWS):
             if (board[x][y] == state):
                 in_row = in_row + 1
                 if (in_row == length):
@@ -32,7 +49,7 @@ def vertical (board, state, length):
 
 def diag_upright (board, state,x,y, length):
     in_row = 0
-    while(y < rows and x < columns):
+    while(y < ROWS and x < COLUMNS):
         if (board[x][y] == state):
             in_row = in_row + 1
             if(in_row == length):
@@ -47,7 +64,7 @@ def diag_upright (board, state,x,y, length):
 
 def diag_downright (board, state,x,y, length):
     in_row = 0
-    while(x < columns and y >= 0):
+    while(x < COLUMNS and y >= 0):
         if (board[x][y] == state):
             in_row = in_row + 1
             if(in_row == length):
@@ -61,16 +78,30 @@ def diag_downright (board, state,x,y, length):
     return False 
 
 def diagonal (board, state, length):
-    for y in range(rows):
-        for x in range(columns):
-                if diag_upright(board, state, x, y, length) or diag_downright(board, state,x,y, length) :
-                    return True
+    for y in range(ROWS - 3):
+        if diag_upright(board, state, 0, y, length) :
+            return True
+    for x in range(COLUMNS - 3):
+        if diag_upright(board, state, x, 0, length) :
+            return True
+    for y in range(ROWS - 3, ROWS):
+        if diag_downright(board, state, 0, y, length) :
+            return True
+    for x in range(COLUMNS - 3):
+         if diag_downright(board, state, x, ROWS - 1,  length) :
+            return True
     return False
 
+    # for y in range(ROWS):
+    #     for x in range(COLUMNS):
+    #             if diag_upright(board, state, x, y, length) or diag_downright(board, state,x,y, length) :
+    #                 return True
+    # return False
+
 def full (board):
-    for y in range(rows):
-        for x in range(columns):
-            if (board[x][y] == "0"):
+    for y in range(ROWS):
+        for x in range(COLUMNS):
+            if (board[x][y] == "*"):
                 return False
     return True
 
@@ -95,109 +126,92 @@ def in_row (board, turn, length):
 
 def possible_moves (board):
     moves = []
-    for x in range(columns):
-        if (board[x][rows - 1] == "0"):
+    for x in range(COLUMNS):
+        if (board[x][ROWS - 1] == "*"):
             moves.append(x) 
     return moves
 
 def go_next (board, move, state):
-    board1 = board 
-    for y in range(rows):
-        if(board1[move][y] == "0"):
+    board1 = copy_board(board) 
+    for y in range(ROWS):
+        if(board1[move][y] == "*"):
             board1[move][y] = state
             return board1
-    return board
 
 # TESTING
-
-board0 = [["0" for y in range(rows)] for x in range(columns)]
-
-hor_board = [["0" for y in range(rows)] for x in range(columns)]
-print (hor_board)
-for y in range(rows):
-	for x in range(columns):
-		if (y%2 == 0):
-			hor_board[x][y] = "r"
-		else:
-			hor_board[x][y] = "b"
-	print y
-
-vert_board = [["0" for y in range(rows)] for x in range(columns)]
-for x in range(columns):
-	for y in range(rows):
-		if (x%2 == 0):
-			vert_board[x][y] = "r"
-		else:
-			vert_board[x][y] = "b"
-
-diag1_board = [["0" for y in range(rows)] for x in range(columns)]
-diag1_board[2][2] = "r"
-diag1_board[3][3] = "r"
-diag1_board[4][4] = "r"
-diag1_board[5][5] = "r"
-
-diag2_board = [["0" for y in range(rows)] for x in range(columns)]
-diag2_board[2][5] = "r"
-diag2_board[3][4] = "r"
-diag2_board[4][3] = "r"
-diag2_board[5][2] = "r"
-
-insert_board = [["0" for y in range(rows)] for x in range(columns)]
-insert_board[0][0] = "r"
-insert_board[1][0] = "r"
-insert_board[2][0] = "r"
-
-#print (board0)
-#print "hor: ", (hor_board)
-#print "vert: ", (vert_board)
-#print (diag1_board)
-#print "diag2: ", (diag2_board)
-#print "insert: ", (insert_board)
+board0 = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
 
 
-if (is_terminal(board0, "r") == False):
-    print "success0"
-if (is_terminal(hor_board, "r")):
-    print "success1"
-if (horizontal(vert_board, "r", 4)):
-	print "failure1"
-if (is_terminal(vert_board, "r")):
-   print "success2"
-if (vertical(hor_board, "r", 4)):
-	print "failure2"
-if (diagonal(vert_board, "r", 4)):
+hor_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+
+for y in range(ROWS):
+    for x in range(COLUMNS):
+        if (y%2 == 0):
+            hor_board[x][y] = "R"
+        else:
+            hor_board[x][y] = "Y"
+
+
+vert_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+for x in range(COLUMNS):
+    for y in range(ROWS):
+        if (x%2 == 0):
+            vert_board[x][y] = "R"
+        else:
+            vert_board[x][y] = "Y"
+
+
+diag1_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+diag1_board[2][2] = "R"
+diag1_board[3][3] = "R"
+diag1_board[4][4] = "R"
+diag1_board[5][5] = "R"
+
+
+diag2_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+diag2_board[2][5] = "R"
+diag2_board[3][4] = "R"
+diag2_board[4][3] = "R"
+diag2_board[5][2] = "R"
+
+
+insert_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+insert_board[0][0] = "R"
+insert_board[1][0] = "R"
+insert_board[2][0] = "R"
+
+
+if (is_terminal(board0, "R") != False):
+    print "failure0"
+if (is_terminal(hor_board, "R") == False):
+    print "failure0.5"
+if (horizontal(vert_board, "R", 4)):
+    print "failure1"
+if (is_terminal(vert_board, "R") == False):
+   print "failure1.5"
+if (vertical(hor_board, "R", 4)):
+    print "failure2"
+if (diagonal(vert_board, "R", 4)):
     print "failure3"
-if (is_terminal(diag1_board, "r")):
-    print "success3"
-if (is_terminal(diag2_board, "r")):
-    print "success4"
-if (is_terminal(hor_board, "r")):
-    print "success5"
+if (is_terminal(diag1_board, "R") == False):
+    print "failure3.5"
+if (is_terminal(diag2_board, "R") == False):
+    print "failure4"
+if (is_terminal(hor_board, "R") == False):
+    print "failure5"
 moves1 = possible_moves(board0)
 moves2 = possible_moves(hor_board)
-print (moves1)
-print (moves2)
-go_board = go_next(insert_board, 3, "r")
-#print (go_board)
-if (is_terminal(go_board, "r")):
-    print "succes6"
+go_board = go_next(insert_board, 3, "R")
+if (is_terminal(go_board, "R") == False):
+    print "failure6"
+
+def dummy():
+    print "hey!"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# testing go_next to see if it changes original
+empty = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+moved = go_next(empty, 1, "R")
 
 
 #class Piece:
@@ -205,3 +219,10 @@ if (is_terminal(go_board, "r")):
 #   self.r_pos = x_loc
 #   self.c_pos = y_loc
 #   self.state = state
+
+
+# class GameBoard(object):
+#     def __init__(self, board)
+
+
+
