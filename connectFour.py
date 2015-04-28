@@ -21,8 +21,8 @@ global playersTurn
 global board
 
 # instantiate empty board
-board = [['*'] * 6, ['*'] * 6, ['*'] * 6,
-         ['*'] * 6, ['*'] * 6, ['*'] * 6, ['*'] * 6]
+board = [['.'] * 6, ['.'] * 6, ['.'] * 6,
+         ['.'] * 6, ['.'] * 6, ['.'] * 6, ['.'] * 6]
 
 # print intro, ask for first player, print starting board,
 # assign to playersTurn, call MOVE
@@ -76,15 +76,15 @@ def moveAI():
 
 # take user column input, alter board in memory, print board, call MOVE
 def movePlayer():
-  column = raw_input("\nYour turn! Please choose a column (0-6):\n").lower()
-  if column not in ['q','0','1','2','3','4','5','6']:
+  column = raw_input("\nYour turn! Please choose a column (1-7):\n").lower()
+  if column not in ['q','1','2','3','4','5','6','7']:
     movePlayer()
   elif column == 'q':
     sys.exit()
   else:
-    column = int(column)
+    column = int(column) - 1
     for row in range(6):
-      if board[column][row] == "*":
+      if board[column][row] == ".":
         board[column][row] = "Y"
         print "\nYour move:"
         printBoard()
@@ -95,7 +95,7 @@ def movePlayer():
 
 # print ASCII board to terminal window
 def printBoard():
-  print "0 1 2 3 4 5 6"
+  print "1 2 3 4 5 6 7"
   for row in [5,4,3,2,1,0]:
     for column in range(6):
       print board[column][row],
