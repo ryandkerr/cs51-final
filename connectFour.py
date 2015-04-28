@@ -54,10 +54,10 @@ def move():
         board[column][row] = "r"
       if board[column][row] == "Y":
         board[column][row] = "y"
-  if game_won(board, "R"):
+  if game_won(board, "r"):
     print "\nGame over! I win!"
     sys.exit()
-  elif game_won(board, "Y"):
+  elif game_won(board, "y"):
     print "\nGame over! You win!"
     sys.exit()
   elif full(board):
