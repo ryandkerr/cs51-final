@@ -192,10 +192,7 @@ moves2 = possible_moves(hor_board)
 go_board = go_next(insert_board, 3, "R")
 if (is_terminal(go_board, "R") == False):
     print "failure6"
-
-def dummy():
-    print "hey!"
-
+    
 
 # testing go_next to see if it changes original
 empty = [["." for y in range(ROWS)] for x in range(COLUMNS)]
