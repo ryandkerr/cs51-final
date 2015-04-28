@@ -139,12 +139,7 @@ def go_next (board, move, state):
             return board1
 
 # TESTING
-<<<<<<< HEAD
-board0 = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
-=======
-
 board0 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
->>>>>>> 0386ef838eb71a3dbf685ccdef5ed88604ef96b8
 
 
 hor_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
