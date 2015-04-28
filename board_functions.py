@@ -17,7 +17,7 @@ ROWS = 6
 
 # copies board without changing original board
 def copy_board(board):
-    copy = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+    copy = [["." for y in range(ROWS)] for x in range(COLUMNS)]
     for x in range(COLUMNS):
         for y in range(ROWS):
             copy[x][y] = board[x][y]
@@ -101,7 +101,7 @@ def diagonal (board, state, length):
 def full (board):
     for y in range(ROWS):
         for x in range(COLUMNS):
-            if (board[x][y] == "*"):
+            if (board[x][y] == "."):
                 return False
     return True
 
@@ -127,22 +127,27 @@ def in_row (board, turn, length):
 def possible_moves (board):
     moves = []
     for x in range(COLUMNS):
-        if (board[x][ROWS - 1] == "*"):
+        if (board[x][ROWS - 1] == "."):
             moves.append(x) 
     return moves
 
 def go_next (board, move, state):
     board1 = copy_board(board) 
     for y in range(ROWS):
-        if(board1[move][y] == "*"):
+        if(board1[move][y] == "."):
             board1[move][y] = state
             return board1
 
 # TESTING
+<<<<<<< HEAD
 board0 = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+=======
+
+board0 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
+>>>>>>> 0386ef838eb71a3dbf685ccdef5ed88604ef96b8
 
 
-hor_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+hor_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 
 for y in range(ROWS):
     for x in range(COLUMNS):
@@ -152,7 +157,7 @@ for y in range(ROWS):
             hor_board[x][y] = "Y"
 
 
-vert_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+vert_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 for x in range(COLUMNS):
     for y in range(ROWS):
         if (x%2 == 0):
@@ -161,21 +166,21 @@ for x in range(COLUMNS):
             vert_board[x][y] = "Y"
 
 
-diag1_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+diag1_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 diag1_board[2][2] = "R"
 diag1_board[3][3] = "R"
 diag1_board[4][4] = "R"
 diag1_board[5][5] = "R"
 
 
-diag2_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+diag2_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 diag2_board[2][5] = "R"
 diag2_board[3][4] = "R"
 diag2_board[4][3] = "R"
 diag2_board[5][2] = "R"
 
 
-insert_board = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+insert_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 insert_board[0][0] = "R"
 insert_board[1][0] = "R"
 insert_board[2][0] = "R"
@@ -204,13 +209,10 @@ moves2 = possible_moves(hor_board)
 go_board = go_next(insert_board, 3, "R")
 if (is_terminal(go_board, "R") == False):
     print "failure6"
-
-def dummy():
-    print "hey!"
-
+    
 
 # testing go_next to see if it changes original
-empty = [["*" for y in range(ROWS)] for x in range(COLUMNS)]
+empty = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 moved = go_next(empty, 1, "R")
 
 
