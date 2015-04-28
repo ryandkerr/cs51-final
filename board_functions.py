@@ -34,7 +34,7 @@ def diag_upright (board, state,x,y):
 	in_row = 0
 	while(x <= rows and y <= columns):
 		if (board[x][y] == state):
-			in_rows = in_rows + 1
+			in_row = in_row + 1
 			if(in_row == 4):
 				return True
 			x = x + 1
@@ -63,7 +63,7 @@ def diag_downright (board, state,x,y):
 def diaganol (board, state):
 	for x in range(rows):
 		for y in range(columns):
-				if diag_upright(board, state, x, y) or diag_downright(board, state,x,y) :
+				if (diag_upright(board, state, x, y) or diag_downright(board, state,x,y)) :
 					return True
 	return False
 
@@ -75,7 +75,7 @@ def full (board):
 	return True
 
 def is_terminal (board, turn):
-	if (horizontal(board, turn) or vertical(board, turn) or diagonal(board, turn) or full(board)):
+	if (horizontal(board, turn) or vertical(board, turn) or diaganol(board, turn) or full(board)):
 		return True
 	else:
 		return False
@@ -123,13 +123,13 @@ board2 = board0
 for y in range(columns):
 	for x in range(rows):
 		if (y%2 == 0):
-			board2[x][y] = "r"
+			board2[x][y] = "b"
 		else:
 			board2[x][y] = "b"
 
 
 
-board3 = board1
+board3 = board0
 board3[2][2] = "r"
 board3[3][3] = "r"
 board3[4][4] = "r"
@@ -137,7 +137,7 @@ board3[5][5] = "r"
 
 
 
-board4 = board1
+board4 = board0
 board4[2][5] = "r"
 board4[3][4] = "r"
 board4[4][3] = "r"
