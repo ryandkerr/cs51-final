@@ -48,16 +48,16 @@ def init():
 def move():
   global playersTurn
   global board
-  for row in range(5):
-    for column in range(6):
-      if board[column][row] == "R":
-        board[column][row] = "r"
-      if board[column][row] == "Y":
-        board[column][row] = "y"
-  if game_won(board, "r"):
+  # for row in range(5):
+  #   for column in range(6):
+  #     if board[column][row] == "R":
+  #       board[column][row] = "r"
+  #     if board[column][row] == "Y":
+  #       board[column][row] = "y"
+  if game_won(board, "R"):
     print "\nGame over! I win!"
     sys.exit()
-  elif game_won(board, "y"):
+  elif game_won(board, "Y"):
     print "\nGame over! You win!"
     sys.exit()
   elif full(board):
@@ -75,7 +75,7 @@ def moveAI():
   global board
   print "\nRondo is thinking...."
   # time.sleep(1)
-  board = go_next(board, minimax(board, 3), "R")
+  board = go_next(board, minimax(board, 1), "R")
   print "Rondo's move:"
   printBoard()
   move()
@@ -83,13 +83,13 @@ def moveAI():
 
 # take user column input, alter board in memory, print board, call MOVE
 def movePlayer():
-  column = raw_input("\nYour turn! Please choose a column (1-7):\n").lower()
-  if column not in ['q','1','2','3','4','5','6','7']:
+  column = raw_input("\nYour turn! Please choose a column (0-6):\n").lower()
+  if column not in ['q','0','1','2','3','4','5','6']:
     movePlayer()
   elif column == 'q':
     sys.exit()
   else:
-    column = int(column) - 1
+    column = int(column)
     for row in range(6):
       if board[column][row] == ".":
         board[column][row] = "Y"
@@ -102,7 +102,7 @@ def movePlayer():
 
 # print ASCII board to terminal window
 def printBoard():
-  print "1 2 3 4 5 6 7"
+  print "0 1 2 3 4 5 6"
   for row in [5,4,3,2,1,0]:
     for column in range(6):
       print board[column][row],
