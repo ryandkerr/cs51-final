@@ -11,7 +11,7 @@ def horizontal_threat (board, state, length):
     for y in range(ROWS):
         in_row = 0
         for x in range(COLUMNS):
-            if (board[x][y] == state):
+            if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
                     if (x > 0):
@@ -30,7 +30,7 @@ def vertical_threat (board, state, length):
     for x in range(COLUMNS):
         in_row = 0
         for y in range(ROWS):
-            if (board[x][y] == state):
+            if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
                     if (y > 0):
@@ -48,7 +48,7 @@ def diag_upright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(y < ROWS and x < COLUMNS):
-        if (board[x][y] == state):
+        if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
                 if (x > 0 and y > 0):
@@ -70,7 +70,7 @@ def diag_downright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(x < COLUMNS and y >= 0):
-        if (board[x][y] == state):
+        if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
                 if (x > 0 and y < ROWS):
