@@ -6,7 +6,8 @@
 
 # to be implemented:
 # easy/med/hard modes
-# latest move capital, rest lowercase
+# consistent ''/""
+# abstraction/factoring/etc
 
 # import external modules
 import time
@@ -35,7 +36,7 @@ def init():
   while (first != "y") & (first != "n") & (first != "q"):
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
-  if first == "q":
+  if first == 'q':
     sys.exit()
   print '\nStarting board:'
   printBoard()
