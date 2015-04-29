@@ -91,7 +91,7 @@ def movePlayer():
     sys.exit()
   else:
     column = int(column) - 1
-    for row in range(6):
+    for row in range(ROWS):
       if board[column][row] == ".":
         board[column][row] = "Y"
         print "\nYour move:"
@@ -103,10 +103,12 @@ def movePlayer():
 
 # print ASCII board to terminal window
 def printBoard():
-  print "1 2 3 4 5 6 7"
-  for row in [5,4,3,2,1,0]:
-    for column in range(6):
-      print board[column][row],
-    print board[6][row]
+  for column in range(COLUMNS):
+    print str(1 + column),
+  print ''
+  for row in range(ROWS):
+    for column in range(COLUMNS):
+      print board[column][ROWS - row - 1],
+    print ''
 
 init()
