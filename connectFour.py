@@ -15,7 +15,7 @@ import sys
 
 # import our scripts
 from evaluate import *
-from prototype import *
+from ab_pruning import *
 from board_functions import *
 
 # declare global variables
@@ -27,7 +27,7 @@ board = [['.'] * 6, ['.'] * 6, ['.'] * 6,
          ['.'] * 6, ['.'] * 6, ['.'] * 6, ['.'] * 6]
 
 # print intro, ask for first player, print starting board,
-# assign to playersTurn, call MOVE
+# assign to playersTurn, call move()
 def init():
   global playersTurn
   print "\nHello! My name is Rondo. Let's play Connect Four!"
@@ -77,7 +77,7 @@ def moveAI():
   global board
   print "\nRondo is thinking...."
   # time.sleep(1)
-  board = go_next(board, minimax(board, 3), "R")
+  board = go_next(board, minimax_ab(board, 5), "R")
   print "Rondo's move:"
   printBoard()
   move()
