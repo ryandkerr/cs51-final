@@ -23,11 +23,11 @@ def horizontal_threat (board, state, length):
                 if (in_row == length):
                     if x > 0:
                         if board[x-1][y] == ".":
-                            if y=0 or board[x-1][y-1] != ".":
+                            if y == 0 or board[x-1][y-1] != ".":
                                 value = value - (length*5)
                     if (x < COLUMNS - length):
                         if board[x+length][y] == '.' and board[x+length][y-1] != ".":
-                            if y = 0 or board[x+length][y-1] != ".":
+                            if y == 0 or board[x+length][y-1] != ".":
                                 value = value - (length*5)
                     return value
             else:
@@ -59,7 +59,7 @@ def diag_upright_threat (board, state,x,y, length):
             if(in_row == length):
                 if (x > 0 and y > 0):
                     if board[x-1][y-1] == ".":
-                        if y = 1 or board[x-1][y-2] != ".":
+                        if y == 1 or board[x-1][y-2] != ".":
                             value = value - (length*5)
                 if (x < COLUMNS - length and y < ROWS - length):
                     if board[x+length][y+length] == '.':
@@ -87,7 +87,7 @@ def diag_downright_threat (board, state,x,y, length):
                             value = value - (length*5)
                 if (x < COLUMNS - length and y >= length):
                     if board[x+length][y-length] == '.':
-                        if y = length or board[x+length][y+length-1] != "."
+                        if y == length or board[x+length][y+length-1] != "."
                             value = value - (length*5)
                 return value
             x = x + 1
