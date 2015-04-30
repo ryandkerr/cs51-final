@@ -94,3 +94,60 @@ def max_player(board, depth):
 # is it a draw?
 # is it a red player wins?
 # is it a black player wins?
+
+# AB PRUNING MIN AND MAX PLAYER MOVES HERE
+# returns a score
+# min_ab(board, 3, -inf, inf) returns a score
+def min_ab(board, depth, a, b):
+    if is_terminal(board, "R"):
+    
+        # this needs to say wether the terminal state is a draw, win, loss
+        return evaluate(board)
+
+    else:
+        next_moves = possible_moves(board) 
+        beta = b
+
+        # if end of tree evaluate scores
+        for move in next_moves:
+            new_board = go_next(board, move, "Y")
+
+            board_score = float("inf")
+
+            if depth == 0:
+                board_score = evaluate(new_board)
+            elif alpha >= b:
+                board_score = max_ab(new_board, depth - 1, a, beta)
+
+            if board_score < beta:
+                beta = board_score
+
+        return beta
+
+
+
+def max_ab(board, depth, a, b):
+    if is_terminal(board, "Y"):
+    
+        # this needs to say wether the terminal state is a draw, win, loss
+        return evaluate(board)
+
+    else:
+        next_moves = possible_moves(board) 
+        alpha = a
+
+        # if end of tree, evaluate scores
+        for move in next_moves:
+            new_board = go_next(board, move, "R")
+
+            board_score = float("-inf")
+
+            if depth == 0:
+                board_score = evaluate(new_board)
+            else:
+                board_score = min_ab(new_board, depth - 1, alpha, beta)
+
+            if board_score > alpha:
+                alpha = board_score
+
+        return alpha
