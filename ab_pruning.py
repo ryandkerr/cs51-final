@@ -1,13 +1,15 @@
-# prototype.py
+# ab_pruning.py
 # Connect Four MiniMax AI
 # Ryan Kerr, Milan Ravenell, Matt Tesfalul, Evan Sahdhoefner
 # CS51 final project
-# Prototype file for minimax algorithm
+# Minimax algorithm using alpha-beta pruning
 
 from board_functions import *
 from evaluate import *
 
-# minimax takes a board and a specified depth and outputs the best MOVE
+# minimax_ab takes a board array and depth int as arguments
+# minimax_ab returns the best MOVE int
+# Example usage: minimax_ab(board, 5) 
 def minimax_ab(board, depth):
   
   # get array of possible moves 
@@ -15,6 +17,7 @@ def minimax_ab(board, depth):
   best_move = next_moves[0]
   best_score = float("-inf")
 
+  # initial alpha & beta values for alpha-beta pruning
   alpha = float("-inf")
   beta = float("inf")
 
@@ -33,6 +36,7 @@ def minimax_ab(board, depth):
       best_move = move
 
   return best_move
+
 
 #####
 # AB PRUNING MIN AND MAX PLAYER MOVES HERE
