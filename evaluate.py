@@ -6,6 +6,13 @@
 
 from board_functions import *
 
+# Checks to see if there are a series of pieces in a row of a given state for a given length.
+# If there are that many in a row, it checks to see if the position before and after the series 
+# are empty. If the positions before or after are empty, it checks if the position under those 
+# threatening spots are empty, in which case the spot is no longer a threat. Returns a heuristic 
+# proportional to the number of threatening spots the series has. The all have the same functionality
+# as in board_functions.py, but with the added ability to check for the number of threatening locations.
+
 def horizontal_threat (board, state, length):
     value = 0
     for y in range(ROWS):
@@ -76,12 +83,8 @@ def diag_downright_threat (board, state,x,y, length):
             if(in_row == length):
                 if (x > 0 and y < ROWS):
                     if board[x-1][y+1] == ".":
-<<<<<<< HEAD
                         if board[x-1][y] != ".":
                             value = value - 1
-=======
-                        value = value - 1
->>>>>>> 4b9bd1b896f8baa82c716b0dcd13d4ce23f332f0
                 if (x < COLUMNS - length and y >= length):
                     if board[x+length][y-length] == '.':
                         if y = length or board[x+length][y+length-1] != "."
@@ -102,10 +105,9 @@ def diagonal_threat (board, state, length):
             value = value + diag_upright_threat(board, state, x, y, length) + diag_downright_threat(board, state, x, y, length)
     return value
 
+# Returns a heuristic proportional to the number of threatening positions on the board.
 def threat(board, state, length):
-    value = 0
-    value = value + horizontal_threat(board, state, length) + vertical_threat(board, state, length) + diagonal_threat(board, state, length)
-    return value
+    return horizontal_threat(board, state, length) + vertical_threat(board, state, length) + diagonal_threat(board, state, length)
 
 
 # evaluate takes a board and a player's color and outputs a SCORE based on 
