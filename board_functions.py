@@ -27,7 +27,7 @@ def horizontal (board, state, length):
     for y in range(ROWS):
         in_row = 0
         for x in range(COLUMNS):
-            if (board[x][y] == state):
+            if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
                     return True
@@ -39,7 +39,7 @@ def vertical (board, state, length):
     for x in range(COLUMNS):
         in_row = 0
         for y in range(ROWS):
-            if (board[x][y] == state):
+            if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
                     return True
@@ -50,7 +50,7 @@ def vertical (board, state, length):
 def diag_upright (board, state,x,y, length):
     in_row = 0
     while(y < ROWS and x < COLUMNS):
-        if (board[x][y] == state):
+        if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
                
@@ -66,7 +66,7 @@ def diag_upright (board, state,x,y, length):
 def diag_downright (board, state,x,y, length):
     in_row = 0
     while(x < COLUMNS and y >= 0):
-        if (board[x][y] == state):
+        if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
                 print x

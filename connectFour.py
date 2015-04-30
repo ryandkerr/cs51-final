@@ -6,6 +6,8 @@
 
 # to be implemented:
 # easy/med/hard modes
+# consistent ''/""
+# abstraction/factoring/etc
 
 # import external modules
 import time
@@ -34,7 +36,7 @@ def init():
   while (first != "y") & (first != "n") & (first != "q"):
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
-  if first == "q":
+  if first == 'q':
     sys.exit()
   print '\nStarting board:'
   printBoard()
@@ -48,12 +50,12 @@ def init():
 def move():
   global playersTurn
   global board
-  # for row in range(5):
-  #   for column in range(6):
-  #     if board[column][row] == "R":
-  #       board[column][row] = "r"
-  #     if board[column][row] == "Y":
-  #       board[column][row] = "y"
+  for row in range(ROWS):
+    for column in range(COLUMNS):
+      if board[column][row] == "R":
+        board[column][row] = "r"
+      if board[column][row] == "Y":
+        board[column][row] = "y"
   if game_won(board, "R"):
     print "\nGame over! I win!"
     sys.exit()
@@ -75,7 +77,7 @@ def moveAI():
   global board
   print "\nRondo is thinking...."
   # time.sleep(1)
-  board = go_next(board, minimax(board, 1), "R")
+  board = go_next(board, minimax(board, 3), "R")
   print "Rondo's move:"
   printBoard()
   move()
@@ -83,14 +85,14 @@ def moveAI():
 
 # take user column input, alter board in memory, print board, call MOVE
 def movePlayer():
-  column = raw_input("\nYour turn! Please choose a column (0-6):\n").lower()
-  if column not in ['q','0','1','2','3','4','5','6']:
+  column = raw_input("\nYour turn! Please choose a column (1-7):\n").lower()
+  if column not in ['q','1','2','3','4','5','6','7']:
     movePlayer()
   elif column == 'q':
     sys.exit()
   else:
-    column = int(column)
-    for row in range(6):
+    column = int(column) - 1
+    for row in range(ROWS):
       if board[column][row] == ".":
         board[column][row] = "Y"
         print "\nYour move:"
@@ -102,10 +104,12 @@ def movePlayer():
 
 # print ASCII board to terminal window
 def printBoard():
-  print "0 1 2 3 4 5 6"
-  for row in [5,4,3,2,1,0]:
-    for column in range(6):
-      print board[column][row],
-    print board[6][row]
+  for column in range(COLUMNS):
+    print str(1 + column),
+  print ''
+  for row in range(ROWS):
+    for column in range(COLUMNS):
+      print board[column][ROWS - row - 1],
+    print ''
 
 init()

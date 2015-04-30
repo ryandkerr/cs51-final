@@ -11,7 +11,7 @@ def horizontal_threat (board, state, length):
     for y in range(ROWS):
         in_row = 0
         for x in range(COLUMNS):
-            if (board[x][y] == state):
+            if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
                     if x > 0:
@@ -32,7 +32,7 @@ def vertical_threat (board, state, length):
     for x in range(COLUMNS):
         in_row = 0
         for y in range(ROWS):
-            if (board[x][y] == state):
+            if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
                     if (y < ROWS - length):
@@ -47,7 +47,7 @@ def diag_upright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(y < ROWS and x < COLUMNS):
-        if (board[x][y] == state):
+        if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
                 if (x > 0 and y > 0):
@@ -71,13 +71,17 @@ def diag_downright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(x < COLUMNS and y >= 0):
-        if (board[x][y] == state):
+        if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
                 if (x > 0 and y < ROWS):
                     if board[x-1][y+1] == ".":
+<<<<<<< HEAD
                         if board[x-1][y] != ".":
                             value = value - 1
+=======
+                        value = value - 1
+>>>>>>> 4b9bd1b896f8baa82c716b0dcd13d4ce23f332f0
                 if (x < COLUMNS - length and y >= length):
                     if board[x+length][y-length] == '.':
                         if y = length or board[x+length][y+length-1] != "."
@@ -100,7 +104,7 @@ def diagonal_threat (board, state, length):
 
 def threat(board, state, length):
     value = 0
-        value = value + (horizontal_threat(board, state, length) + vertical_threat(board, state, length) + diagonal_threat(board, state, length)
+    value = value + horizontal_threat(board, state, length) + vertical_threat(board, state, length) + diagonal_threat(board, state, length)
     return value
 
 
