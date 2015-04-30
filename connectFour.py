@@ -15,7 +15,6 @@ import sys
 
 # import our scripts
 from evaluate import *
-from prototype import *
 from ab_pruning import *
 from board_functions import *
 
@@ -28,7 +27,7 @@ board = [['.'] * 6, ['.'] * 6, ['.'] * 6,
          ['.'] * 6, ['.'] * 6, ['.'] * 6, ['.'] * 6]
 
 # print intro, ask for first player, print starting board,
-# assign to playersTurn, call MOVE
+# assign to playersTurn, call move()
 def init():
   global playersTurn
   print "\nHello! My name is Rondo. Let's play Connect Four!"
