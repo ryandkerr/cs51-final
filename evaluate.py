@@ -87,7 +87,7 @@ def diag_downright_threat (board, state,x,y, length):
                             value = value - (length*5)
                 if (x < COLUMNS - length and y >= length):
                     if board[x+length][y-length] == '.':
-                        if y == length or board[x+length][y+length-1] != "."
+                        if y == length or board[x+length][y+length-1] != ".":
                             value = value - (length*5)
                 return value
             x = x + 1
