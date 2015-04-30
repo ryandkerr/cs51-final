@@ -72,8 +72,6 @@ def diag_downright (board, state,x,y, length):
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
-                print x
-                print y
                 return True
             x = x + 1
             y = y - 1
@@ -205,7 +203,7 @@ if (diagonal(vert_board, "R", 4)):
     print "failure3"
 if (is_terminal(diag1_board, "R") == False):
     print "failure3.5"
-if (is_terminal(diag2_board, "R") == True):
+if (is_terminal(diag2_board, "R") == False):
     print "failure4"
 if (is_terminal(hor_board, "R") == False):
    print "failure5"
