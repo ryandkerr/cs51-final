@@ -143,7 +143,7 @@ def evaluate(board):
         return float("-inf")
 
     elif full(board):
-        return -5
+        return 0
 
     # here we define heuristics for good board
     elif threat(board, "R",3) != 0:
@@ -157,3 +157,6 @@ def evaluate(board):
 
     elif threat(board, "Y",2) != 0:
         return threat(board,"Y",2) 
+
+    else:
+        return 5
