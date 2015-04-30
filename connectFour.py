@@ -6,6 +6,8 @@
 
 # to be implemented:
 # easy/med/hard modes
+# consistent ''/""
+# abstraction/factoring/etc
 
 # import external modules
 import time
@@ -34,7 +36,7 @@ def init():
   while (first != "y") & (first != "n") & (first != "q"):
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
-  if first == "q":
+  if first == 'q':
     sys.exit()
   print '\nStarting board:'
   printBoard()
@@ -47,6 +49,13 @@ def init():
 # check for gameOver, reassign playersTurn, call moveAI or movePlayer
 def move():
   global playersTurn
+  global board
+  for row in range(ROWS):
+    for column in range(COLUMNS):
+      if board[column][row] == "R":
+        board[column][row] = "r"
+      if board[column][row] == "Y":
+        board[column][row] = "y"
   if game_won(board, "R"):
     print "\nGame over! I win!"
     sys.exit()
@@ -83,7 +92,7 @@ def movePlayer():
     sys.exit()
   else:
     column = int(column) - 1
-    for row in range(6):
+    for row in range(ROWS):
       if board[column][row] == ".":
         board[column][row] = "Y"
         print "\nYour move:"
@@ -95,10 +104,12 @@ def movePlayer():
 
 # print ASCII board to terminal window
 def printBoard():
-  print "1 2 3 4 5 6 7"
-  for row in [5,4,3,2,1,0]:
-    for column in range(6):
-      print board[column][row],
-    print board[6][row]
+  for column in range(COLUMNS):
+    print str(1 + column),
+  print ''
+  for row in range(ROWS):
+    for column in range(COLUMNS):
+      print board[column][ROWS - row - 1],
+    print ''
 
 init()
