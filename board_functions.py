@@ -69,8 +69,6 @@ def diag_downright (board, state,x,y, length):
         if (board[x][y] == state):
             in_row = in_row + 1
             if(in_row == length):
-                print x
-                print y
                 return True
             x = x + 1
             y = y - 1

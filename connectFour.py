@@ -75,7 +75,7 @@ def moveAI():
   global board
   print "\nRondo is thinking...."
   # time.sleep(1)
-  board = go_next(board, minimax(board, 1), "R")
+  board = go_next(board, minimax(board, 3), "R")
   print "Rondo's move:"
   printBoard()
   move()

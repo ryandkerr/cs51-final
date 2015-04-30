@@ -88,12 +88,15 @@ def diag_downright_threat (board, state,x,y, length):
             y = y - 1
     return 0 
 
-def threat(board, state, length):
+def diagonal_threat (board, state, length):
     value = 0
     for x in range(COLUMNS):
         for y in range(ROWS):
-            value = value + (horizontal_threat(board, state, x, y) + vertical_threat(board, state, x, y) + diag_downright_threat(board, state, x, y) + diag_upright_threat(board, state, x, y))
-            
+            value = value + diag_upright_threat(board, state, x, y, length) + diag_downright_threat(board, state, x, y, length)
+    return value
+
+def threat(board, state, length):
+    return horizontal_threat(board, state, length) + vertical_threat(board, state, length) + diagonal_threat(board, state, length)
 
 
 # evaluate takes a board and a player's color and outputs a SCORE based on 
