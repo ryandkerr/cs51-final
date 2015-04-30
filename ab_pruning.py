@@ -120,7 +120,7 @@ def min_ab(board, depth, a, b):
         new_board = go_next(board, move, "Y")
         board_score = evaluate(new_board)
 
-      elif alpha < b:
+      elif a < beta:
         new_board = go_next(board, move, "Y")
         board_score = max_ab(new_board, depth - 1, a, beta)
 
@@ -148,9 +148,9 @@ def max_ab(board, depth, a, b):
       if depth == 0:
         new_board = go_next(board, move, "R")
         board_score = evaluate(new_board)
-      elif alpha < beta:
+      elif alpha < b:
         new_board = go_next(board, move, "R")
-        board_score = min_ab(new_board, depth - 1, alpha, beta)
+        board_score = min_ab(new_board, depth - 1, alpha, b)
 
       if board_score > alpha:
         alpha = board_score

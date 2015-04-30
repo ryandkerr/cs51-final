@@ -16,6 +16,7 @@ import sys
 # import our scripts
 from evaluate import *
 from prototype import *
+from ab_pruning import *
 from board_functions import *
 
 # declare global variables
@@ -77,7 +78,7 @@ def moveAI():
   global board
   print "\nRondo is thinking...."
   # time.sleep(1)
-  board = go_next(board, minimax(board, 3), "R")
+  board = go_next(board, minimax_ab(board, 5), "R")
   print "Rondo's move:"
   printBoard()
   move()
