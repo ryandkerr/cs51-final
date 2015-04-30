@@ -34,74 +34,13 @@ def minimax_ab(board, depth):
 
   return best_move
 
-
-# min player is given a board and choses the lowest option, returns a SCORE
-def min_player(board, depth):
-  if is_terminal(board, "R"):
-  
-    # this needs to say wether the terminal state is a draw, win, loss
-    return evaluate(board)
-
-  else:
-    next_moves = possible_moves(board) 
-    min_score = float("inf")
-
-    # if end of tree evaluate scores
-    for move in next_moves:
-      new_board = go_next(board, move, "Y")
-
-      board_score = 0
-
-      if depth == 0:
-        board_score = evaluate(new_board)
-      else:
-        board_score = max_player(new_board, depth - 1)
-
-      if board_score < min_score:
-        min_score = board_score
-
-    return min_score
-
-
-# max player picks max move and outputs SCORE
-def max_player(board, depth):
-  if is_terminal(board, "Y"):
-  
-    # this needs to say wether the terminal state is a draw, win, loss
-    return evaluate(board)
-
-  else:
-    next_moves = possible_moves(board) 
-    max_score = float("-inf")
-
-    # if end of tree, evaluate scores
-    for move in next_moves:
-      new_board = go_next(board, move, "R")
-
-      board_score = 0
-
-      if depth == 0:
-        board_score = evaluate(new_board)
-      else:
-        board_score = min_player(new_board, depth - 1)
-
-      if board_score > max_score:
-        max_score = board_score
-
-    return max_score
-
-
-# outside of minimax call
-# if we give minimax a board one move away from winning, it should output the
-# winning move. Then we change the board with that move. Then we evaluate if
-# that board is terminal and see if:
-# is it a draw?
-# is it a red player wins?
-# is it a black player wins?
-
+#####
 # AB PRUNING MIN AND MAX PLAYER MOVES HERE
-# returns a score
-# min_ab(board, 3, -inf, inf) returns a score
+#####
+
+# min_ab takes in a board array, depth int, alpha score and beta score
+# min_ab returns the minimum SCORE for that node 
+# Example usage:  min_ab(board, 3, -inf, inf)
 def min_ab(board, depth, a, b):
   if is_terminal(board, "R"):
   
@@ -116,10 +55,12 @@ def min_ab(board, depth, a, b):
     for move in next_moves:
       board_score = float("inf")
 
+      # if furthest depth, return heuristic score of board
       if depth == 0:
         new_board = go_next(board, move, "Y")
         board_score = evaluate(new_board)
 
+      # else continue down tree as long as ab conditions met
       elif a < beta:
         new_board = go_next(board, move, "Y")
         board_score = max_ab(new_board, depth - 1, a, beta)
@@ -130,10 +71,12 @@ def min_ab(board, depth, a, b):
     return beta
 
 
-
+# max_ab takes in a board array, depth int, alpha score and beta score
+# max_ab returns the maximum SCORE for that node
+# Example usage:  max_ab(board, 3, -inf, inf)
 def max_ab(board, depth, a, b):
+  # check to see if game over
   if is_terminal(board, "Y"):
-  
     # this needs to say wether the terminal state is a draw, win, loss
     return evaluate(board)
 
@@ -145,9 +88,12 @@ def max_ab(board, depth, a, b):
     for move in next_moves:
       board_score = float("-inf")
 
+      # if furthest depth, return heuristic score of board
       if depth == 0:
         new_board = go_next(board, move, "R")
         board_score = evaluate(new_board)
+      
+      # else continue down tree as long as ab conditions met
       elif alpha < b:
         new_board = go_next(board, move, "R")
         board_score = min_ab(new_board, depth - 1, alpha, b)
