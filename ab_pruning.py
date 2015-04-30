@@ -29,11 +29,13 @@ def minimax_ab(board, depth):
     new_board = go_next(board, move, "R")
 
     # call min on that new board
-    board_score = min_ab(new_board, depth - 1, alpha, beta) + (move % 4)
+    board_score = min_ab(new_board, depth - 1, alpha, beta) - abs(move - 3)
 
     if board_score > best_score:
       best_score = board_score
       best_move = move
+
+    print board_score
 
   return best_move
 

@@ -147,10 +147,11 @@ def evaluate(board):
 
     # here we define heuristics for good board
     elif threat(board, "R",3) != 0:
-        return -1 * threat(board, "R",3)
+        return threat(board, "R",3)
 
     elif threat(board,"Y",3) != 0:
-        return threat(board,"Y",3)
+        print "threaty3"
+        return -1 * threat(board,"Y",3)
 
     elif threat(board, "R",2) != 0:
         return -1 * threat(board, "R",2)
