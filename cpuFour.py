@@ -91,7 +91,7 @@ def move(diff1, diff2):
 def moveAI1(diff1, diff2):
   global board
   print "\nRondo is thinking...."
-  time.sleep(1)
+  time.sleep(5)
   board = go_next(board, minimax_ab(board, diff1, "R"), "R")
   print "Rondo's move:"
   printBoard()
@@ -102,7 +102,7 @@ def moveAI1(diff1, diff2):
 def moveAI2(diff1, diff2):
   global board
   print "\nCarlisle is thinking...."
-  time.sleep(1)
+  time.sleep(5)
   print diff2
   board = go_next(board, minimax_ab(board, diff2, "Y"), "Y")
   print "Carlisle's move:"

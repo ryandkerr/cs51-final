@@ -26,6 +26,9 @@ def minimax_ab(board, depth, state):
     state = "Y"
     opp_state = "R"
 
+  print state
+  print opp_state
+
   
   # go through all of those boards
   for move in next_moves:
@@ -39,6 +42,8 @@ def minimax_ab(board, depth, state):
     if board_score > best_score:
       best_score = board_score
       best_move = move
+
+    print board_score
 
   return best_move
 
