@@ -4,11 +4,6 @@
 # Evan Sandhoefner, Ryan Kerr, Milan Ravenell, Matthew Tesfalul
 # run by typing "python connectfour.py" at command line
 
-# to be implemented:
-# easy/med/hard modes
-# consistent ''/""
-# abstraction/factoring/etc
-
 # import external modules
 import time
 import sys
