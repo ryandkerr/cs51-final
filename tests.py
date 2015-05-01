@@ -19,7 +19,7 @@ hor_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 
 for y in range(ROWS):
   for x in range(COLUMNS):
-     if (y % 2 == 0):
+    if (y % 2 == 0):
       hor_board[x][y] = "R"
     else:
       hor_board[x][y] = "Y"
