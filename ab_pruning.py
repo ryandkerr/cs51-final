@@ -10,7 +10,7 @@ from evaluate import *
 # minimax_ab takes a board array and depth int as arguments
 # minimax_ab returns the best MOVE int
 # Example usage: minimax_ab(board, 5) 
-def minimax_ab(board, depth):
+def minimax_ab(board, depth, state):
   
   # get array of possible moves 
   next_moves = possible_moves(board)
@@ -35,8 +35,6 @@ def minimax_ab(board, depth):
       best_score = board_score
       best_move = move
 
-    print board_score
-
   return best_move
 
 
@@ -51,7 +49,7 @@ def min_ab(board, depth, a, b):
   if is_terminal(board, "R"):
   
     # this needs to say wether the terminal state is a draw, win, loss
-    return evaluate(board)
+    return evaluate(board, state)
 
   else:
     next_moves = possible_moves(board) 
@@ -64,7 +62,7 @@ def min_ab(board, depth, a, b):
       # if furthest depth, return heuristic score of board
       if depth == 0:
         new_board = go_next(board, move, "Y")
-        board_score = evaluate(new_board)
+        board_score = evaluate(new_board, state)
 
       # else continue down tree as long as ab conditions met
       elif a < beta:
@@ -84,7 +82,7 @@ def max_ab(board, depth, a, b):
   # check to see if game over
   if is_terminal(board, "Y"):
     # this needs to say wether the terminal state is a draw, win, loss
-    return evaluate(board)
+    return evaluate(board, state)
 
   else:
     next_moves = possible_moves(board) 
@@ -97,7 +95,7 @@ def max_ab(board, depth, a, b):
       # if furthest depth, return heuristic score of board
       if depth == 0:
         new_board = go_next(board, move, "R")
-        board_score = evaluate(new_board)
+        board_score = evaluate(new_board, state)
       
       # else continue down tree as long as ab conditions met
       elif alpha < b:
