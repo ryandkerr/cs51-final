@@ -105,7 +105,7 @@ def moveAI2(diff1, diff2):
   time.sleep(1)
   print diff2
   board = go_next(board, minimax_ab(board, diff2, "Y"), "Y")
-  print "Rondo's move:"
+  print "Carlisle's move:"
   printBoard()
   move(diff1, diff2)
 

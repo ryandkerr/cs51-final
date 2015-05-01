@@ -21,15 +21,20 @@ def minimax_ab(board, depth, state):
   alpha = float("-inf")
   beta = float("inf")
 
+  opp_state = "Y"
+  if state == "Y":
+    state = "Y"
+    opp_state = "R"
+
   
   # go through all of those boards
   for move in next_moves:
     
     # create new board from move
-    new_board = go_next(board, move, "R")
+    new_board = go_next(board, move, state)
 
     # call min on that new board
-    board_score = min_ab(new_board, depth - 1, alpha, beta, state) - abs(move - 3)
+    board_score = min_ab(new_board, depth - 1, alpha, beta, state, opp_state) - abs(move - 3)
 
     if board_score > best_score:
       best_score = board_score
@@ -45,8 +50,8 @@ def minimax_ab(board, depth, state):
 # min_ab takes in a board array, depth int, alpha score and beta score
 # min_ab returns the minimum SCORE for that node 
 # Example usage:  min_ab(board, 3, -inf, inf)
-def min_ab(board, depth, a, b, state):
-  if is_terminal(board, "R"):
+def min_ab(board, depth, a, b, state, opp_state):
+  if is_terminal(board, state):
   
     # this needs to say wether the terminal state is a draw, win, loss
     return evaluate(board, state)
@@ -61,13 +66,13 @@ def min_ab(board, depth, a, b, state):
 
       # if furthest depth, return heuristic score of board
       if depth == 0:
-        new_board = go_next(board, move, "Y")
+        new_board = go_next(board, move, opp_state)
         board_score = evaluate(new_board, state)
 
       # else continue down tree as long as ab conditions met
       elif a < beta:
-        new_board = go_next(board, move, "Y")
-        board_score = max_ab(new_board, depth - 1, a, beta, state)
+        new_board = go_next(board, move, opp_state)
+        board_score = max_ab(new_board, depth - 1, a, beta, state, opp_state)
 
       if board_score < beta:
         beta = board_score
@@ -78,9 +83,9 @@ def min_ab(board, depth, a, b, state):
 # max_ab takes in a board array, depth int, alpha score and beta score
 # max_ab returns the maximum SCORE for that node
 # Example usage:  max_ab(board, 3, -inf, inf)
-def max_ab(board, depth, a, b, state):
+def max_ab(board, depth, a, b, state, opp_state):
   # check to see if game over
-  if is_terminal(board, "Y"):
+  if is_terminal(board, opp_state):
     # this needs to say wether the terminal state is a draw, win, loss
     return evaluate(board, state)
 
@@ -94,13 +99,13 @@ def max_ab(board, depth, a, b, state):
 
       # if furthest depth, return heuristic score of board
       if depth == 0:
-        new_board = go_next(board, move, "R")
+        new_board = go_next(board, move, state)
         board_score = evaluate(new_board, state)
       
       # else continue down tree as long as ab conditions met
       elif alpha < b:
-        new_board = go_next(board, move, "R")
-        board_score = min_ab(new_board, depth - 1, alpha, b, state)
+        new_board = go_next(board, move, state)
+        board_score = min_ab(new_board, depth - 1, alpha, b, state, opp_state)
 
       if board_score > alpha:
         alpha = board_score
