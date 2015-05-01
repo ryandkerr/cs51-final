@@ -24,8 +24,8 @@ global board
 global difficulty
 
 # instantiate empty board
-board = [['.'] * 6, ['.'] * 6, ['.'] * 6,
-         ['.'] * 6, ['.'] * 6, ['.'] * 6, ['.'] * 6]
+board = [["."] * 6, ["."] * 6, ["."] * 6,
+         ["."] * 6, ["."] * 6, ["."] * 6, ["."] * 6]
 
 # helper function for quitting if the user wants to
 def quit_if(user_input):
@@ -53,7 +53,7 @@ def init():
                       " type '1', '2', '3', '4', or '5'.\n").lower()
   quit_if(difficulty)
   difficulty = int(difficulty)
-  print '\nStarting board:'
+  print "\nStarting board:"
   printBoard()
   if first == "n":
     playersTurn = False
@@ -102,7 +102,7 @@ def moveAI():
 def movePlayer():
   column = raw_input("\nYour turn! Please choose a column (1-7):\n").lower()
   quit_if(column)
-  if column not in ['q','1','2','3','4','5','6','7']:
+  if column not in ["q","1","2","3","4","5","6","7"]:
     movePlayer()
   else:
     column = int(column) - 1
@@ -120,10 +120,10 @@ def movePlayer():
 def printBoard():
   for column in range(COLUMNS):
     print str(1 + column),
-  print ''
+  print ""
   for row in range(ROWS):
     for column in range(COLUMNS):
       print board[column][ROWS - row - 1],
-    print ''
+    print ""
 
 init()
