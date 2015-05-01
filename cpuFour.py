@@ -26,28 +26,48 @@ global board
 board = [['.'] * 6, ['.'] * 6, ['.'] * 6,
          ['.'] * 6, ['.'] * 6, ['.'] * 6, ['.'] * 6]
 
+def quit_if(user_input):
+  if user_input == "q":
+    sys.exit()
+
 # print intro, ask for first player, print starting board,
-# assign to ai2_turn, call move()
+# assign to ai2_turn, call move(diff1, diff2)
 def init():
   global ai2_turn
   print "\nHello! My name is Rondo. Let's play Connect Four!"
-  first = raw_input("You'll be yellow (Y). You can enter 'q' at any prompt "
-                    "to quit.\nWould you like to go first? (y/n):\n").lower()
+  first = raw_input("Carlisle will be yellow (Y)."
+                    "\nShould he go first? (y/n):\n").lower()
   while (first != "y") & (first != "n") & (first != "q"):
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
-  if first == 'q':
-    sys.exit()
+  quit_if(first)
+  difficulty1 = raw_input("What difficulty should Rondo be? "
+                          " Choose a number 1 (easy) - 5 (hard):\n").lower()
+  while difficulty1 not in ["1","2","3","4","5","q"]:
+    difficulty1 = raw_input("\nSorry, I don't understand! "
+                      "Please type a number 1-5:\n").lower()
+
+  difficulty2 = raw_input("What difficulty should Carlisle be? "
+                          " Choose a number 1 (easy) - 5 (hard):\n").lower()
+  quit_if(difficulty1)
+  while difficulty2 not in ["1","2","3","4","5","q"]:
+    difficulty2 = raw_input("\nSorry, I don't understand! "
+                      "Please type a number 1-5:\n").lower()
+  quit_if(difficulty2)
+  difficulty1 = int(difficulty1)
+  difficulty2 = int(difficulty2)
+  print difficulty1
+  print difficulty2
   print '\nStarting board:'
   printBoard()
   if first == "n":
     ai2_turn = False
   else:
     ai2_turn = True
-  move()
+  move(difficulty1, difficulty2)
 
 # check for gameOver, reassign ai2_turn, call moveAI1 or moveAI2
-def move():
+def move(diff1, diff2):
   global ai2_turn
   global board
   for row in range(ROWS):
@@ -67,31 +87,31 @@ def move():
     sys.exit()
   elif ai2_turn:
     ai2_turn = False
-    moveAI2()
+    moveAI2(diff1, diff2)
   else:
     ai2_turn = True
-    moveAI1()
+    moveAI1(diff1, diff2)
 
 # sleep(?), assign R to first available cell, print board, call MOVE
-def moveAI1():
+def moveAI1(diff1, diff2):
   global board
   print "\nRondo is thinking...."
   time.sleep(1)
-  board = go_next(board, minimax_ab(board, 3, "R"), "R")
+  board = go_next(board, minimax_ab(board, diff1, "R"), "R")
   print "Rondo's move:"
   printBoard()
-  move()
+  move(diff1, diff2)
   
 
 # take user column input, alter board in memory, print board, call MOVE
-def moveAI2():
+def moveAI2(diff1, diff2):
   global board
   print "\nCarlisle is thinking...."
   time.sleep(1)
-  board = go_next(board, minimax_ab(board, 3, "Y"), "Y")
-  print "Rondo's move:"
+  board = go_next(board, minimax_ab(board, diff2, "Y"), "Y")
+  print "Carlisle's move:"
   printBoard()
-  move()
+  move(diff1, diff2)
 
 # print ASCII board to terminal window
 def printBoard():

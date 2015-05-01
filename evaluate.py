@@ -33,10 +33,10 @@ def horizontal_threat (board, state, length):
                         # empty
                         if y == 0 or board[x+1][y-1] != ".":
                             value = value - 15
-
                     if x >= length and board[x-length][y] == ".":
                         if y == 0 or board[x-length][y-1] != ".":
                             value = value - 15
+
                     return value
 
             else:
@@ -60,7 +60,6 @@ def vertical_threat (board, state, length):
                     if y < ROWS - 1 and board[x][y+1] == ".":
                         value = value - 15
                     return value
-
             else:
                 in_row = 0
 
@@ -86,7 +85,6 @@ def diag_upright_threat (board, state,x,y, length):
 
                     if y == length or board[x-length][y-length-1] != ".":
                         value = value - 15
-
                 return value
             x = x + 1
             y = y + 1
@@ -167,8 +165,8 @@ def evaluate(board, state):
         offstate = state
         defstate = "Y"
     else:
-        offstate == state      
-        defstate == "R"
+        offstate = state      
+        defstate = "R"
 
     off_threat = threat(board, offstate, 3)
     def_threat = threat(board, defstate, 3)
