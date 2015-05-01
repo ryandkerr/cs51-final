@@ -71,7 +71,6 @@ def diag_upright_threat (board, state,x,y, length):
                     if y == length or board[x-length][y-length-1] != ".":
                         value = value - (length*length*5)
                 return value
-
             x = x + 1
             y = y + 1
 
