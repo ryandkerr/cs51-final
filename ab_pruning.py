@@ -29,7 +29,7 @@ def minimax_ab(board, depth, state):
     new_board = go_next(board, move, "R")
 
     # call min on that new board
-    board_score = min_ab(new_board, depth - 1, alpha, beta) - abs(move - 3)
+    board_score = min_ab(new_board, depth - 1, alpha, beta, state) - abs(move - 3)
 
     if board_score > best_score:
       best_score = board_score
@@ -45,7 +45,7 @@ def minimax_ab(board, depth, state):
 # min_ab takes in a board array, depth int, alpha score and beta score
 # min_ab returns the minimum SCORE for that node 
 # Example usage:  min_ab(board, 3, -inf, inf)
-def min_ab(board, depth, a, b):
+def min_ab(board, depth, a, b, state):
   if is_terminal(board, "R"):
   
     # this needs to say wether the terminal state is a draw, win, loss
@@ -67,7 +67,7 @@ def min_ab(board, depth, a, b):
       # else continue down tree as long as ab conditions met
       elif a < beta:
         new_board = go_next(board, move, "Y")
-        board_score = max_ab(new_board, depth - 1, a, beta)
+        board_score = max_ab(new_board, depth - 1, a, beta, state)
 
       if board_score < beta:
         beta = board_score
@@ -78,7 +78,7 @@ def min_ab(board, depth, a, b):
 # max_ab takes in a board array, depth int, alpha score and beta score
 # max_ab returns the maximum SCORE for that node
 # Example usage:  max_ab(board, 3, -inf, inf)
-def max_ab(board, depth, a, b):
+def max_ab(board, depth, a, b, state):
   # check to see if game over
   if is_terminal(board, "Y"):
     # this needs to say wether the terminal state is a draw, win, loss
@@ -100,7 +100,7 @@ def max_ab(board, depth, a, b):
       # else continue down tree as long as ab conditions met
       elif alpha < b:
         new_board = go_next(board, move, "R")
-        board_score = min_ab(new_board, depth - 1, alpha, b)
+        board_score = min_ab(new_board, depth - 1, alpha, b, state)
 
       if board_score > alpha:
         alpha = board_score
