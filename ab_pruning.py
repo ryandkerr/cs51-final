@@ -50,11 +50,7 @@ def minimax_ab(board, depth, state):
 # min_ab takes in a board array, depth int, alpha score, beta score, own
 #   piece string and opponent piece string
 # min_ab returns the minimum SCORE for that node 
-<<<<<<< HEAD
-# Example usage: min_ab(board, 3, -inf, inf)
-=======
 # Example usage: min_ab(board, 3, -inf, inf, "R", "Y")
->>>>>>> bf15fb77f19ccc5b2556201161c12840f878c063
 def min_ab(board, depth, a, b, state, opp_state):
   if is_terminal(board, state):
   
