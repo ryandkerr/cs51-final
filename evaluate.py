@@ -6,14 +6,18 @@
 
 from board_functions import *
 
-# Checks to see if there are a series of pieces in a row of a given state for a given length.
-# If there are that many in a row, it checks to see if the position before and after the series 
-# are empty. If the positions before or after are empty, it checks if the position under those 
-# threatening spots are empty, in which case the spot is no longer a threat. Returns a heuristic 
-# proportional to the number of threatening spots the series has. The all have the same functionality
-# as in board_functions.py, but with the added ability to check for the number of threatening locations.
+# Checks to see if there are a series of pieces in a row of a given state 
+# for a given length. If there are that many in a row, it checks to see if 
+# the position before and after the series are empty. If the positions before 
+# or after are empty, it checks if the position under those threatening spots 
+# are empty, in which case the spot is no longer a threat. Returns a heuristic 
+# proportional to the number of threatening spots the series has. The all have 
+# the same functionality as in board_functions.py, but with the added ability 
+# to check for the number of threatening locations.
 
-# Given a board, a string signifying the turn, and a length, 
+# Given a board, a string signifying the turn, and a length, returns a 
+# heuristical value proportional to the number of threatening positions
+# horizontally on the board.
 def horizontal_threat (board, state, length):
     value = 0
     for y in range(ROWS):
@@ -30,7 +34,8 @@ def horizontal_threat (board, state, length):
                     # checks if there is a threatening position
                     if x < COLUMNS - 1 and board[x+1][y] == ".":
 
-                        # checks if position below threatening position is empty
+                        # checks if position below threatening position is 
+                        # empty
                         if y == 0 or board[x+1][y-1] != ".":
                             value = value - (length*length*5)
 
@@ -44,6 +49,9 @@ def horizontal_threat (board, state, length):
 
     return 0
 
+# Given a board, a string signifying the turn, and a length, returns a 
+# heuristical value proportional to the number of threatening positions
+# vertically on the board.
 def vertical_threat (board, state, length):
     value = 0
     for x in range(COLUMNS):
@@ -57,7 +65,7 @@ def vertical_threat (board, state, length):
                 in_row = in_row + 1
                 if (in_row == length):
                     if y < ROWS - 1 and board[x][y+1] == ".":
-                        value = value - (length*length*5)
+                        value = value - (15)
                     return value
 
             else:
@@ -65,6 +73,9 @@ def vertical_threat (board, state, length):
 
     return 0
 
+# Given a board, a string signifying the turn, a length, and a starting 
+# x and y location returns a  heuristical value proportional to the number 
+# of threatening positions diagonally upright on the board.
 def diag_upright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
@@ -75,11 +86,17 @@ def diag_upright_threat (board, state,x,y, length):
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
-                if x < COLUMNS - 1 and y < ROWS - 1 and board[x+1][y+1] == "." and board[x+1][y] != ".":
-                    value = value - (length*length*5)
-                if x >= length and y >= length and board[x-length][y-length] == '.':
+                if (x < COLUMNS - 1 and y < ROWS - 1 and 
+                    board[x+1][y+1] == "." and board[x+1][y] != "."):
+
+                    value = value - (15)
+
+                if (x >= length and y >= length and 
+                    board[x-length][y-length] == '.'):
+
                     if y == length or board[x-length][y-length-1] != ".":
-                        value = value - (length*length*5)
+                        value = value - (15)
+
                 return value
             x = x + 1
             y = y + 1
@@ -91,6 +108,9 @@ def diag_upright_threat (board, state,x,y, length):
 
     return 0
 
+# Given a board, a string signifying the turn, a length, and a starting 
+# x and y location returns a  heuristical value proportional to the number 
+# of threatening positions diagonally downright on the board.
 def diag_downright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
@@ -101,7 +121,10 @@ def diag_downright_threat (board, state,x,y, length):
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
-                if x >= length and y < ROWS - length and board[x-length][y+length] == "." and board[x-length][y+length-1] != ".":
+                if (x >= length and y < ROWS - length and 
+                    board[x-length][y+length] == "." and 
+                    board[x-length][y+length-1] != "."):
+
                     value = value - (length*length*5)
                 if x < COLUMNS - 1 and y > 0 and board[x+1][y-1] == '.':
                     if y == 1 or board[x+1][y-2] != ".":
@@ -117,6 +140,9 @@ def diag_downright_threat (board, state,x,y, length):
 
     return 0 
 
+# Given a board, a string signifying the turn, and a length, returns a 
+# heuristical value proportional to the number of threatening positions
+# diagonally on the board.
 def diagonal_threat (board, state, length):
     value = 0
     for y in range(ROWS - 3):
@@ -200,7 +226,8 @@ if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -90):
     print "Failure diagnol upright" 
 if (diag_upright_threat(diag_board3, "R", 0, 0, 3) != 0):
     print "Failure diagnol upright" 
-if (diagonal_threat (diag_board1, "R", 3) != -45) and (diagonal_threat(diag_board2, "R", 3) != 90):
+if (diagonal_threat (diag_board1, "R", 3) != -45) and \
+    (diagonal_threat(diag_board2, "R", 3) != 90):
     print "Failure diagnol function"
 
 # non diag down right threat 
@@ -222,9 +249,13 @@ if (diagonal_threat(two_board, "R", 2) != 0):
 if (diagonal_threat(two_board1, "R", 2) != -40):
     print "Failure length 2 diagnol upward"
 
-# Returns a heuristic proportional to the number of threatening positions on the board.
+# Returns a heuristic proportional to the number of threatening positions 
+# on the board. Calls upon each of the threat functions above to check
+# every possible combination,
 def threat(board, state, length):
-    return horizontal_threat(board, state, length) + vertical_threat(board, state, length) + diagonal_threat(board, state, length)
+    return horizontal_threat(board, state, length) + \
+        vertical_threat(board, state, length) + \
+        diagonal_threat(board, state, length)
 
 
 # evaluate takes a board and a player's color and outputs a SCORE based on 
@@ -254,15 +285,15 @@ def evaluate(board, state):
     elif game_won(board, defstate):
         return float("-inf")
 
-    elif full(board):
-        return 0
-
     # here we define heuristics for good board
     elif off_threat != 0:
         return -1 * off_threat
 
     elif def_threat != 0:
         return def_threat
+
+    elif full(board):
+        return 0
 
     else:
         return 5

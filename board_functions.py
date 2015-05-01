@@ -23,7 +23,8 @@ def copy_board(board):
             copy[x][y] = board[x][y]
     return copy
 
-# Returns true if there are a series of the specified state of the given length horizontally
+# Given a board, string signifying the turn, and a length(int), returns true 
+# if there are a series of the specified state of the given length horizontally
 def horizontal (board, state, length):
     for y in range(ROWS):
         in_row = 0
@@ -36,7 +37,8 @@ def horizontal (board, state, length):
                 in_row = 0
     return False
 
-# Returns true if there are a series of the specified state of the given length vertically
+# Given a board, string signifying the turn, and a length(int), returns true 
+# if there are a series of the specified state of the given length vertically.
 def vertical (board, state, length):
     for x in range(COLUMNS):
         in_row = 0
@@ -52,7 +54,9 @@ def vertical (board, state, length):
                 in_row = 0
     return False
 
-# Returns true if there are a series of the specified state of the given length diagonally in the upright direction at a given point
+# Given a board, string signifying the turn, an x and y position, and a 
+# length(int), Returns true if there are a series of the specified state 
+# of the given length diagonally in the downright direction at a given point.
 def diag_upright (board, state,x,y, length):
     in_row = 0
     while(y < ROWS and x < COLUMNS):
@@ -67,7 +71,10 @@ def diag_upright (board, state,x,y, length):
             x = x + 1
             y = y + 1
     return False
-# Returns true if there are a series of the specified state of the given length diagonally in the downright direction at a given point
+
+# Given a board, string signifying the turn, an x and y position, and a 
+# length(int), Returns true if there are a series of the specified state 
+# of the given length diagonally in the downright direction at a given point.
 def diag_downright (board, state,x,y, length):
     in_row = 0
     while(x < COLUMNS and y >= 0):
@@ -83,7 +90,9 @@ def diag_downright (board, state,x,y, length):
             y = y - 1
     return False 
 
-# Iterates the diagonal upright and diagonal downright over the possible positions where there could be a 4 in a row diagonally 
+# Given a board, a string signifying the turn, and a length(int), iterates 
+# the diagonal upright and diagonal downright over the possible positions 
+# where there could be a 4 in a row diagonally.
 def diagonal (board, state, length):
     for y in range(ROWS - 3):
         if diag_upright(board, state, 0, y, length) :
@@ -107,28 +116,27 @@ def full (board):
                 return False
     return True
 
-# Returns true if a player has won or if the board is full
+# Given a board and a string signyfing the turn, returns true if that player 
+# has won or if the board is full.
 def is_terminal (board, turn):
-    if (horizontal(board, turn, 4) or vertical(board, turn, 4) or diagonal(board, turn, 4) or full(board)):
-        return True
-    else:
-        return False
+    return (horizontal(board, turn, 4) or vertical(board, turn, 4) or 
+        diagonal(board, turn, 4) or full(board))
 
-# Returns true if a player has won
+# Given a board and a string signyfing the turn, returns true if that player 
+# has won.
 def game_won (board, turn):
-    if (horizontal(board, turn, 4) or vertical(board, turn, 4) or diagonal(board, turn, 4)):
-        return True
-    else:
-        return False
+    return (horizontal(board, turn, 4) or vertical(board, turn, 4) or 
+        diagonal(board, turn, 4))
+       
 
-# boolean about wether there are length discs in a row
+# Given a board, a string signifying the turn, and a length(int), returns true
+# if there is a series of the given player's piece of the given length.
 def in_row (board, turn, length):
-    if (horizontal(board, turn, length) or vertical(board, turn, length) or diagonal(board, turn, length)):
-        return True
-    else:
-        return False
+    return (horizontal(board, turn, length) or vertical(board, turn, length) 
+        or diagonal(board, turn, length))
 
-# Returns a list of ints that represent the columns where we could possibly place a piece
+# Given a board, returns a list of ints that represent the columns where we 
+# could possibly place a piece
 def possible_moves (board):
     moves = []
     for x in range(COLUMNS):
@@ -136,8 +144,9 @@ def possible_moves (board):
             moves.append(x) 
     return moves
 
-# Given a board, an int, and a piece color, it will return a new board with that piece inserted into the lowest possible location
-# at the column that is represented by the int
+# Given a board, an int, and a piece color, it will return a new board with 
+# that piece inserted into the lowest possible location at the column that is
+# represented by the int
 def go_next (board, move, state):
     board1 = copy_board(board) 
     for y in range(ROWS):
@@ -184,7 +193,8 @@ diag2_board[1][3] = "R"
 diag2_board[2][2] = "R"
 diag2_board[3][1] = "R"
 
-# Creates a board into which we will call go_next and insert a piece of the same state
+# Creates a board into which we will call go_next and insert a piece of the 
+# same state
 insert_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 insert_board[0][0] = "R"
 insert_board[1][0] = "R"
