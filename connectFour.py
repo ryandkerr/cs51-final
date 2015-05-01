@@ -19,11 +19,10 @@ global board
 global difficulty
 
 # instantiate empty board
-board = [["."] * 6, ["."] * 6, ["."] * 6,
-         ["."] * 6, ["."] * 6, ["."] * 6, ["."] * 6]
+board = [["." for row in range(ROWS)] for column in range(COLUMNS)]
 
-# helper function for quitting if the user wants to
-def quit_if(user_input):
+# takes input originating from user, exits program if input is "q"
+def exit_if(user_input):
   if user_input == "q":
     sys.exit()
 
@@ -38,7 +37,7 @@ def init():
   while (first != "y") & (first != "n") & (first != "q"):
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
-  quit_if(first)
+  exit_if(first)
   if first == "n":
     playersTurn = False
   else:
@@ -50,7 +49,7 @@ def init():
   while difficulty not in ["1","2","3","4","5","q"]:
     difficulty = raw_input("\nSorry, I don't understand! Please"
                            " type '1', '2', '3', '4', or '5'.\n").lower()
-  quit_if(difficulty)
+  exit_if(difficulty)
   difficulty = int(difficulty)
   print "\nStarting board:"
   printBoard()
@@ -101,7 +100,7 @@ def movePlayer():
   while column not in ["q","1","2","3","4","5","6","7"]:
     column = raw_input("\nSorry, I don't understand! Please type '1', '2', '3',"
                        " '4', '5', '6', or '7'.\n")
-  quit_if(column)
+  exit_if(column)
   column = int(column) - 1
   for row in range(ROWS):
     if board[column][row] == ".":
@@ -122,5 +121,5 @@ def printBoard():
     for column in range(COLUMNS):
       print board[column][ROWS - row - 1],
     print ""
-    
+
 init()

@@ -97,6 +97,7 @@ def diag_downright (board, state,x,y, length):
 # diagonal returns true if there is a series of the given length of one type
 # diagonally
 # Example usage: diag_upright(board, "R", 0, 0, 4)
+
 def diagonal (board, state, length):
   for y in range(ROWS - 3):
     if diag_upright(board, state, 0, y, length) :
@@ -115,6 +116,7 @@ def diagonal (board, state, length):
 # full takes a board array
 # full returns true if the board is full
 # Example usage: full(board)
+
 def full (board):
   for y in range(ROWS):
     for x in range(COLUMNS):
@@ -134,8 +136,9 @@ def is_terminal (board, turn):
 # game_won returns true if there is 4 in a row of one player 
 # Example usage: game_won(board, "R")
 def game_won (board, turn):
-  return (horizontal(board, turn, 4) or vertical(board, turn, 4) or 
-    diagonal(board, turn, 4))
+    return ((horizontal(board, turn, 4) or vertical(board, turn, 4) or 
+            diagonal(board, turn, 4)))
+
        
 
 # in_row takes a board array, state string, and a length int
@@ -143,32 +146,28 @@ def game_won (board, turn):
 # player
 # Example usage: in_row(board, "R", 3)
 def in_row (board, turn, length):
-    return (horizontal(board, turn, length) or vertical(board, turn, length) 
-        or diagonal(board, turn, length))
+  return ((horizontal(board, turn, length) or vertical(board, turn, length) 
+          or diagonal(board, turn, length)))
+
 
 # possible_moves takes a board array
 # possible_moves returns an int list of the possible columns where a piece could
 # be placed
 # Example usage: possible_moves(board, "R")
 def possible_moves (board):
-    moves = []
-    for x in range(COLUMNS):
-        if (board[x][ROWS - 1] == "."):
-            moves.append(x) 
-    return moves
+  moves = []
+  for x in range(COLUMNS):
+    if (board[x][ROWS - 1] == "."):
+      moves.append(x) 
+  return moves
 
 # go_next takes a board array, a move int, and a state string
 # go_next returns an updated board with a piece in the lowest possible
 # spot in the column of the given int
 # Example usage: go_next(board, 4, "R")
 def go_next (board, move, state):
-    board1 = copy_board(board) 
-    for y in range(ROWS):
-        if(board1[move][y] == "."):
-            board1[move][y] = state
-            return board1
-
-
-
-
-
+  board1 = copy_board(board) 
+  for y in range(ROWS):
+    if(board1[move][y] == "."):
+      board1[move][y] = state
+      return board1
