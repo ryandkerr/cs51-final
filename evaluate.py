@@ -81,7 +81,7 @@ def diag_upright_threat (board, state,x,y, length):
                     value = value - 15
 
                 if (x >= length and y >= length and 
-                    board[x-length][y-length] == '.'):
+                    board[x-length][y-length] == "."):
 
                     if y == length or board[x-length][y-length-1] != ".":
                         value = value - 15
@@ -111,7 +111,7 @@ def diag_downright_threat (board, state,x,y, length):
                     board[x-length][y+length-1] != "."):
 
                     value = value - 15
-                if x < COLUMNS - 1 and y > 0 and board[x+1][y-1] == '.':
+                if x < COLUMNS - 1 and y > 0 and board[x+1][y-1] == ".":
                     if y == 1 or board[x+1][y-2] != ".":
                         value = value - 15
                 return value
