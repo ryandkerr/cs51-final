@@ -20,7 +20,7 @@ def horizontal_threat (board, state, length):
         in_row = 0
 
         for x in range(COLUMNS):
-            if x >= COLUMNS - 3 and in_rows < 1:
+            if x >= COLUMNS - 3 and in_row < 1:
                 break
 
             if (board[x][y] == state or board[x][y] == state.lower()):
@@ -50,7 +50,7 @@ def vertical_threat (board, state, length):
         in_row = 0
 
         for y in range(ROWS):
-            if y >= ROWS - 3 and in_rows < 1:
+            if y >= ROWS - 3 and in_row < 1:
                 break
 
             if (board[x][y] == state or board[x][y] == state.lower()):
