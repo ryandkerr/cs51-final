@@ -15,9 +15,10 @@ from board_functions import *
 # the same functionality as in board_functions.py, but with the added ability 
 # to check for the number of threatening locations.
 
-# Given a board, a string signifying the turn, and a length, returns a 
-# heuristical value proportional to the number of threatening positions
-# horizontally on the board.
+# horizontal_threat takes a board array, state string, and length int
+# horizontal_threat returns an int proportional to the number threatening 
+# positions if there is a series of the given length of one type horizontally
+# Example usage: horizontal_threat(board, "R", 4)
 def horizontal_threat (board, state, length):
     value = 0
     for y in range(ROWS):
@@ -44,9 +45,10 @@ def horizontal_threat (board, state, length):
 
     return 0
 
-# Given a board, a string signifying the turn, and a length, returns a 
-# heuristical value proportional to the number of threatening positions
-# vertically on the board.
+# vertical_threat takes a board array, state string, and length int
+# vertical_threat returns an int proportional to the number threatening 
+# positions if there is a series of the given length of one type vertically
+# Example usage: vertical_threat(board, "R", 4)
 def vertical_threat (board, state, length):
     value = 0
     for x in range(COLUMNS):
@@ -65,9 +67,12 @@ def vertical_threat (board, state, length):
 
     return 0
 
-# Given a board, a string signifying the turn, a length, and a starting 
-# x and y location returns a  heuristical value proportional to the number 
-# of threatening positions diagonally upright on the board.
+# diag_upright_threat takes a board array, state string, an x int, a y int,
+# and length int
+# diag_upright_threat returns an int proportional to the number threatening 
+# positions if there is a series of the given length of one type starting at the
+# given x and y position
+# Example usage: diag_upright_threat(board, "R", 0, 0, 4)
 def diag_upright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
@@ -81,7 +86,7 @@ def diag_upright_threat (board, state,x,y, length):
                     value = value - 15
 
                 if (x >= length and y >= length and 
-                    board[x-length][y-length] == '.'):
+                    board[x-length][y-length] == "."):
 
                     if y == length or board[x-length][y-length-1] != ".":
                         value = value - 15
@@ -96,9 +101,12 @@ def diag_upright_threat (board, state,x,y, length):
 
     return 0
 
-# Given a board, a string signifying the turn, a length, and a starting 
-# x and y location returns a  heuristical value proportional to the number 
-# of threatening positions diagonally downright on the board.
+# diag_downright_threat takes a board array, state string, an x int, a y int,
+# and length int
+# diag_downright_threat returns an int proportional to the number threatening 
+# positions if there is a series of the given length of one type starting at 
+# the given x and y position
+# Example usage: diag_downright_threat(board, "R", 0, 0, 4)
 def diag_downright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
@@ -111,7 +119,7 @@ def diag_downright_threat (board, state,x,y, length):
                     board[x-length][y+length-1] != "."):
 
                     value = value - 15
-                if x < COLUMNS - 1 and y > 0 and board[x+1][y-1] == '.':
+                if x < COLUMNS - 1 and y > 0 and board[x+1][y-1] == ".":
                     if y == 1 or board[x+1][y-2] != ".":
                         value = value - 15
                 return value
@@ -125,9 +133,10 @@ def diag_downright_threat (board, state,x,y, length):
 
     return 0 
 
-# Given a board, a string signifying the turn, and a length, returns a 
-# heuristical value proportional to the number of threatening positions
-# diagonally on the board.
+# diagonal_threat takes a board array, state string, and length int
+# diagonal_threat returns an int proportional to the number threatening 
+# positions if there is a series of the given length of one type
+# Example usage: diagonal_threat(board, "R", 4)
 def diagonal_threat (board, state, length):
     value = 0
     for y in range(ROWS - 3):
@@ -141,17 +150,19 @@ def diagonal_threat (board, state, length):
     return value
 
 
-# Returns a heuristic proportional to the number of threatening positions 
-# on the board. Calls upon each of the threat functions above to check
-# every possible combination,
+# threat takes a board array, state string, and length int
+# threat returns an int proportional to the number threatening 
+# positions if there is a series of the given length of one type
+# Example usage: threat(board, "R", 4)
 def threat(board, state, length):
     return (horizontal_threat(board, state, length) + 
         vertical_threat(board, state, length) + 
         diagonal_threat(board, state, length))
 
 
-# evaluate takes a board and a player's color and outputs a SCORE based on 
-# how good that board is for max payer. High score means good for max player.
+# evaluate takes a board and a player's color 
+# evaluate returns a  SCORE based on how good that board is for max payer.
+# High score means good for max player.
 def evaluate(board, state):
 
     # we need a way to see if cpu won, player won, or draw

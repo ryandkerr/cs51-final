@@ -1,8 +1,8 @@
-# connectFour.py
+# cpuFour.py
 # Connect Four MiniMax AI
 # CS 51 Final Project
 # Evan Sandhoefner, Ryan Kerr, Milan Ravenell, Matthew Tesfalul
-# run by typing "python connectfour.py" at command line
+# run by typing "python cpufour.py" at command line
 
 # import external modules
 import time
@@ -29,7 +29,8 @@ def quit_if(user_input):
 # assign to ai2_turn, call move(diff1, diff2)
 def init():
   global ai2_turn
-  print "\nHello! My name is Rondo. Let's play Connect Four!"
+  print ("\nHello! My name is Rondo. I'm about to play Connect Four with my"
+         " friend Carlisle.")
   first = raw_input("Carlisle will be yellow (Y)."
                     "\nShould he go first? (y/n):\n").lower()
   while (first != "y") & (first != "n") & (first != "q"):
@@ -51,8 +52,6 @@ def init():
   quit_if(difficulty2)
   difficulty1 = int(difficulty1)
   difficulty2 = int(difficulty2)
-  print difficulty1
-  print difficulty2
   print '\nStarting board:'
   printBoard()
   if first == "n":
@@ -61,16 +60,11 @@ def init():
     ai2_turn = True
   move(difficulty1, difficulty2)
 
-# check for gameOver, reassign ai2_turn, call moveAI1 or moveAI2
+# check for game over, change last move to lowercase,
+# reassign ai2_turn, call moveAI1 or moveAI2
 def move(diff1, diff2):
   global ai2_turn
   global board
-  for row in range(ROWS):
-    for column in range(COLUMNS):
-      if board[column][row] == "R":
-        board[column][row] = "r"
-      if board[column][row] == "Y":
-        board[column][row] = "y"
   if game_won(board, "R"):
     print "\nGame over! I win!"
     sys.exit()
@@ -80,29 +74,39 @@ def move(diff1, diff2):
   elif full(board):
     print "\nGame over! It's a tie!"
     sys.exit()
-  elif ai2_turn:
+  for row in range(ROWS):
+    for column in range(COLUMNS):
+      if board[column][row] == "R":
+        board[column][row] = "r"
+      if board[column][row] == "Y":
+        board[column][row] = "y"
+  if ai2_turn:
     ai2_turn = False
     moveAI2(diff1, diff2)
   else:
     ai2_turn = True
     moveAI1(diff1, diff2)
 
-# sleep, assign R to best move, print board, call MOVE
+# sleep if AI too fast, compute optimal move & modify board in memory,
+# print board, call move()
 def moveAI1(diff1, diff2):
   global board
   print "\nRondo is thinking...."
-  time.sleep(1)
+  if diff1 < 4:
+    time.sleep(1)
   board = go_next(board, minimax_ab(board, diff1, "R"), "R")
   print "Rondo's move:"
   printBoard()
   move(diff1, diff2)
   
 
-# sleep, assign R to best move, print board, call MOVE
+# sleep if AI too fast, compute optimal move & modify board in memory,
+# print board, call move()
 def moveAI2(diff1, diff2):
   global board
   print "\nCarlisle is thinking...."
-  time.sleep(1)
+  if diff2 < 4:
+    time.sleep(1)
   board = go_next(board, minimax_ab(board, diff2, "Y"), "Y")
   print "Carlisle's move:"
   printBoard()
