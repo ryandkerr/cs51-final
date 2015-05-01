@@ -19,7 +19,7 @@ hor_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 
 for y in range(ROWS):
     for x in range(COLUMNS):
-        if (y%2 == 0):
+        if (y % 2 == 0):
             hor_board[x][y] = "R"
         else:
             hor_board[x][y] = "Y"
@@ -28,7 +28,7 @@ for y in range(ROWS):
 vert_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 for x in range(COLUMNS):
     for y in range(ROWS):
-        if (x%2 == 0):
+        if (x % 2 == 0):
             vert_board[x][y] = "R"
         else:
             vert_board[x][y] = "Y"
@@ -57,7 +57,7 @@ insert_board[2][0] = "R"
 
 
 if (is_terminal(board0, "R") != False):
-   print "failure0"
+   print board0
 if (is_terminal(hor_board, "R") == False):
     print "failure0.5"
 if (horizontal(vert_board, "R", 4)):

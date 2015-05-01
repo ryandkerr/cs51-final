@@ -6,10 +6,7 @@
 
 
 
-#class GameBoard:
-#   def __init__ (self):
-#   self.ROWS = 7
-#   self.COLUMNS = 5
+
 
 # globals
 COLUMNS = 7
@@ -120,20 +117,20 @@ def full (board):
 # has won or if the board is full.
 def is_terminal (board, turn):
     return (horizontal(board, turn, 4) or vertical(board, turn, 4) or 
-        diagonal(board, turn, 4) or full(board))
+            diagonal(board, turn, 4) or full(board))
 
 # Given a board and a string signyfing the turn, returns true if that player 
 # has won.
 def game_won (board, turn):
-    return (horizontal(board, turn, 4) or vertical(board, turn, 4) or 
-        diagonal(board, turn, 4))
+    return ((horizontal(board, turn, 4) or vertical(board, turn, 4) or 
+            diagonal(board, turn, 4)))
        
 
 # Given a board, a string signifying the turn, and a length(int), returns true
 # if there is a series of the given player's piece of the given length.
 def in_row (board, turn, length):
-    return (horizontal(board, turn, length) or vertical(board, turn, length) 
-        or diagonal(board, turn, length))
+    return ((horizontal(board, turn, length) or vertical(board, turn, length) 
+            or diagonal(board, turn, length)))
 
 # Given a board, returns a list of ints that represent the columns where we 
 # could possibly place a piece
