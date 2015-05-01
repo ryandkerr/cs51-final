@@ -7,7 +7,8 @@
 from board_functions import *
 from evaluate import *
 
-# minimax takes a board and a specified depth and outputs the best MOVE
+# minimax takes a board array and depth int
+# minimax outputs the best MOVE int
 def minimax(board, depth):
     
     # get array of possible moves 
