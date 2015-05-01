@@ -180,7 +180,7 @@ def evaluate(board, state):
     # here we define heuristics for good board
     elif off_threat != 0:
         if off_threat == -30:
-            return float("-inf")
+            return float("inf")
         else:
             return -1 * off_threat
     elif def_threat != 0:
