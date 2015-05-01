@@ -20,11 +20,12 @@ global board
 # instantiate empty board
 board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 
+# takes input originating from user, exits program if input is "q"
 def quit_if(user_input):
   if user_input == "q":
     sys.exit()
 
-# print intro, ask for first player, print starting board,
+# print intro, ask for first player, ask cpu difficulty, print starting board,
 # assign to ai2_turn, call move(diff1, diff2)
 def init():
   global ai2_turn
@@ -86,7 +87,7 @@ def move(diff1, diff2):
     ai2_turn = True
     moveAI1(diff1, diff2)
 
-# sleep(?), assign R to first available cell, print board, call MOVE
+# sleep, assign R to best move, print board, call MOVE
 def moveAI1(diff1, diff2):
   global board
   print "\nRondo is thinking...."
@@ -97,7 +98,7 @@ def moveAI1(diff1, diff2):
   move(diff1, diff2)
   
 
-# take user column input, alter board in memory, print board, call MOVE
+# sleep, assign R to best move, print board, call MOVE
 def moveAI2(diff1, diff2):
   global board
   print "\nCarlisle is thinking...."
