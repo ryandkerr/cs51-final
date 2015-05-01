@@ -7,9 +7,9 @@
 from board_functions import *
 from evaluate import *
 
-# minimax_ab takes a board array and depth int as arguments
+# minimax_ab takes a board array, depth int, player string as arguments
 # minimax_ab returns the best MOVE int
-# Example usage: minimax_ab(board, 5) 
+# Example usage: minimax_ab(board, 5, "R") 
 def minimax_ab(board, depth, state):
   
   # get array of possible moves 

@@ -45,6 +45,9 @@ def vertical (board, state, length):
                 in_row = in_row + 1
                 if (in_row == length):
                     return True
+            elif (board[x][y] == "."):
+                in_row = 0
+                break
             else:
                 in_row = 0
     return False
@@ -56,7 +59,6 @@ def diag_upright (board, state,x,y, length):
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
-               
                 return True
             x = x + 1
             y = y + 1
@@ -89,7 +91,7 @@ def diagonal (board, state, length):
     for x in range(COLUMNS - 3):
         if diag_upright(board, state, x, 0, length) :
             return True
-    for y in range(ROWS - 3, ROWS):
+    for y in range(3, ROWS):
         if diag_downright(board, state, 0, y, length) :
             return True
     for x in range(COLUMNS - 3):
