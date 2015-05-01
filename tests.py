@@ -18,20 +18,20 @@ board0 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 hor_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 
 for y in range(ROWS):
-    for x in range(COLUMNS):
-        if (y % 2 == 0):
-            hor_board[x][y] = "R"
-        else:
-            hor_board[x][y] = "Y"
+  for x in range(COLUMNS):
+     if (y % 2 == 0):
+      hor_board[x][y] = "R"
+    else:
+      hor_board[x][y] = "Y"
 
 # Creates a board with 4 in a row vertically
 vert_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 for x in range(COLUMNS):
-    for y in range(ROWS):
-        if (x % 2 == 0):
-            vert_board[x][y] = "R"
-        else:
-            vert_board[x][y] = "Y"
+  for y in range(ROWS):
+    if (x % 2 == 0):
+      vert_board[x][y] = "R"
+    else:
+      vert_board[x][y] = "Y"
 
 
 # Creates a board with 4 in a row diagonally upright
@@ -57,28 +57,29 @@ insert_board[2][0] = "R"
 
 
 if (is_terminal(board0, "R") != False):
-   print board0
+  print board0
 if (is_terminal(hor_board, "R") == False):
-    print "failure0.5"
+  print "failure0.5"
 if (horizontal(vert_board, "R", 4)):
-    print "failure1"
+  print "failure1"
 if (is_terminal(vert_board, "R") == False):
-   print "failure1.5"
+  print "failure1.5"
 if (vertical(hor_board, "R", 4)):
-    print "failure2"
+  print "failure2"
 if (diagonal(vert_board, "R", 4)):
-    print "failure3"
+  print "failure3"
 if (is_terminal(diag1_board, "R") == False):
-    print "failure3.5"
+  print "failure3.5"
 if (is_terminal(diag2_board, "R") == False):
-    print "failure4"
+  print "failure4"
 if (is_terminal(hor_board, "R") == False):
-   print "failure5"
+  print "failure5"
+
 moves1 = possible_moves(board0)
 moves2 = possible_moves(hor_board)
 go_board = go_next(insert_board, 3, "R")
 if (is_terminal(go_board, "R") == False):
-   print "failure6"
+  print "failure6"
     
 
 # testing go_next to see if it changes original
@@ -95,7 +96,7 @@ verts_board[3][1] = "R"
 verts_board[3][2] = "R"
 
 if (vertical_threat(verts_board, "R", 3) != -15):
-    print "Failure vertictal threat"
+  print "Failure vertictal threat"
 
 # threat of -45 horizontally
 horz_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
@@ -119,11 +120,11 @@ horz_board3[6][0] = "R"
 
 
 if (horizontal_threat(horz_board, "R", 3) != -15):
-    print "Failure for horizontal threat"
+  print "Failure for horizontal threat"
 if (horizontal_threat(horz_board2, "R", 3) != -30):
-    print "Failure for horizontal1 index_outbounds"
+  print "Failure for horizontal1 index_outbounds"
 if (horizontal_threat(horz_board3, "R", 3) != -15):
-    print "Failure for horizontal2 index_outbounds"
+  print "Failure for horizontal2 index_outbounds"
 
 
 
@@ -153,12 +154,12 @@ diag_board3[2][3] = "R"
 
 
 if (diag_downright_threat(diag_board1, "R", 0, 3, 3) != -15):
-    print "Failure diagnol downright"
+  print "Failure diagnol downright"
 if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -30):
-    print "Failure diagnol upright" 
+  print "Failure diagnol upright" 
 if (diag_upright_threat(diag_board3, "R", 0, 0, 3) != 0):
-    print "Failure diagnol upright" 
+  print "Failure diagnol upright" 
 if ((diagonal_threat (diag_board1, "R", 3) != -15) and 
     (diagonal_threat(diag_board2, "R", 3) != -30)):
-    print "Failure diagnol function"
+  print "Failure diagnol function"
 
