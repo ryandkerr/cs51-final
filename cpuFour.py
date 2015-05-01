@@ -26,6 +26,10 @@ global board
 board = [['.'] * 6, ['.'] * 6, ['.'] * 6,
          ['.'] * 6, ['.'] * 6, ['.'] * 6, ['.'] * 6]
 
+def quit_if(user_input):
+  if user_input == "q":
+    sys.exit()
+
 # print intro, ask for first player, print starting board,
 # assign to ai2_turn, call move(diff1, diff2)
 def init():
@@ -36,19 +40,20 @@ def init():
   while (first != "y") & (first != "n") & (first != "q"):
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
-  if first == 'q':
-    sys.exit()
+  quit_if(first)
   difficulty1 = raw_input("What difficulty should Rondo be? "
                           " Choose a number 1 (easy) - 5 (hard):\n").lower()
-  while (difficulty1 > 5) & (difficulty1 < 1):
+  while difficulty1 not in ["1","2","3","4","5","q"]:
     difficulty1 = raw_input("\nSorry, I don't understand! "
                       "Please type a number 1-5:\n").lower()
 
   difficulty2 = raw_input("What difficulty should Carlisle be? "
                           " Choose a number 1 (easy) - 5 (hard):\n").lower()
-  while (difficulty2 > 5) & (difficulty2 < 1):
+  quit_if(difficulty1)
+  while difficulty2 not in ["1","2","3","4","5","q"]:
     difficulty2 = raw_input("\nSorry, I don't understand! "
                       "Please type a number 1-5:\n").lower()
+  quit_if(difficulty2)
   difficulty1 = int(difficulty1)
   difficulty2 = int(difficulty2)
   print difficulty1
