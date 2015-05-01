@@ -29,7 +29,6 @@ def horizontal_threat (board, state, length):
 
             if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
-
                 if (in_row == length):
                     # checks if there is a threatening position
                     if x < COLUMNS - 1 and board[x+1][y] == ".":
@@ -56,11 +55,9 @@ def vertical_threat (board, state, length):
     value = 0
     for x in range(COLUMNS):
         in_row = 0
-
         for y in range(ROWS):
             if y >= ROWS - 3 and in_row < 1:
                 break
-
             if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
@@ -154,106 +151,6 @@ def diagonal_threat (board, state, length):
     for x in range(COLUMNS - 3):
         value += diag_downright_threat(board, state, x, ROWS - 1,  length) 
     return value
-
-# Threat Tests 
-
-# Creates a board with 3 in a row diagonally upright
-verts_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-verts_board[3][0] = "R"
-verts_board[3][1] = "R"
-verts_board[3][2] = "R"
-
-if (vertical_threat(verts_board, "R", 3) != -45):
-    print "Failure vertictal threat"
-
-# threat of -45 horizontally
-horz_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-horz_board[0][2] = "R"
-horz_board[1][2] = "R"
-horz_board[2][2] = "R"
-# placeholder so that test knows column is filled up 
-horz_board[3][1] = "Y"
-
-#second horizontal index outbounds test with no placeholder
-horz_board2 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-horz_board2[1][0] = "R"
-horz_board2[2][0] = "R"
-horz_board2[3][0] = "R"
-
-#second horizontal index outbounds test with no placeholder
-horz_board3 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-horz_board3[4][0] = "R"
-horz_board3[5][0] = "R"
-horz_board3[6][0] = "R"
-
-if (horizontal_threat(horz_board, "R", 3) != -45):
-    print "Failure for horizontal threat"
-if (horizontal_threat(horz_board2, "R", 3) != -90):
-    print "Failure for horizontal1 index_outbounds"
-if (horizontal_threat(horz_board3, "R", 3) != -45):
-    print "Failure for horizontal2 index_outbounds"
-
-
-
-
-# Creates a board with 3 in a row diagonally downright without placeholder
-diag_board1 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-diag_board1[0][3] = "R"
-diag_board1[1][2] = "R"
-diag_board1[2][1] = "R"
-
-# no need for placeholder to fill column 
-
-# Creates a board with 3 in a row diagnally upright
-diag_board2 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-diag_board2[1][1] = "R"
-diag_board2[2][2] = "R"
-diag_board2[3][3] = "R"
-
-#placeholder to signal column filled
-diag_board2[4][3] = "Y"
-
-# Creates a board with 3 in a row diagnally upright
-diag_board3 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-diag_board3[0][1] = "R"
-diag_board3[1][2] = "R"
-diag_board3[2][3] = "R"
-
-
-if (diag_downright_threat(diag_board1, "R", 0, 3, 3) != -45):
-    print "Failure diagonal downright"
-if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -90):
-    print "Failure diagonal upright" 
-if (diag_upright_threat(diag_board3, "R", 0, 0, 3) != 0):
-<<<<<<< HEAD
-    print "Failure diagnol upright" 
-if (diagonal_threat (diag_board1, "R", 3) != -45) and \
-    (diagonal_threat(diag_board2, "R", 3) != 90):
-    print "Failure diagnol function"
-=======
-    print "Failure diagonal upright" 
-if (diagonal_threat (diag_board1, "R", 3) != -45) and (diagonal_threat(diag_board2, "R", 3) != 90):
-    print "Failure diagonal function"
->>>>>>> bb1aca9147c0ffb720ebb0e710b830c72a45832a
-
-# non diag down right threat 
-two_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-two_board[0][2] = "R"
-two_board[1][1] = "R"
-
-# double diag up right threat of -90 
-two_board1 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-two_board1[4][3] = "R"
-two_board1[5][4] = "R"
-#placeholders to show columns are filled
-two_board1[6][4] = "Y"
-two_board1[3][1] = "Y"
-
-if (diagonal_threat(two_board, "R", 2) != 0):
-    print "Failure length 2 diagonal downward"
-
-if (diagonal_threat(two_board1, "R", 2) != -40):
-    print "Failure length 2 diagonal upward"
 
 # Returns a heuristic proportional to the number of threatening positions 
 # on the board. Calls upon each of the threat functions above to check
