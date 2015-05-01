@@ -103,10 +103,6 @@ def diag_downright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(x < COLUMNS and y >= 0):
-<<<<<<< HEAD
-
-=======
->>>>>>> 6daf6942f94ff3e6210c2daa658f8c37549370bc
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
