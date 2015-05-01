@@ -20,8 +20,8 @@ global board
 # instantiate empty board
 board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 
-# takes input originating from user, exits program if input is "q"
-def quit_if(user_input):
+# take input originating from user, exit program if input is "q"
+def exit_if(user_input):
   if user_input == "q":
     sys.exit()
 
@@ -29,27 +29,28 @@ def quit_if(user_input):
 # assign to ai2_turn, call move(diff1, diff2)
 def init():
   global ai2_turn
-  print ("\nHello! My name is Rondo. I'm about to play Connect Four with my"
-         " friend Carlisle.")
+  print ("\nHello! My name is Rondo.\nI'm about to play Connect Four with my"
+         " friend Carlisle.\nYou can enter 'q' at any prompt if you decide"
+         " that you don't want to watch.")
   first = raw_input("Carlisle will be yellow (Y)."
                     "\nShould he go first? (y/n):\n").lower()
   while (first != "y") & (first != "n") & (first != "q"):
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
-  quit_if(first)
-  difficulty1 = raw_input("What difficulty should Rondo be? "
+  exit_if(first)
+  difficulty1 = raw_input("\nWhat difficulty should Rondo be? "
                           " Choose a number 1 (easy) - 5 (hard):\n").lower()
   while difficulty1 not in ["1","2","3","4","5","q"]:
     difficulty1 = raw_input("\nSorry, I don't understand! "
                       "Please type a number 1-5:\n").lower()
-
-  difficulty2 = raw_input("What difficulty should Carlisle be? "
+  exit_if(difficulty1)
+  difficulty2 = raw_input("\nWhat difficulty should Carlisle be? "
                           " Choose a number 1 (easy) - 5 (hard):\n").lower()
-  quit_if(difficulty1)
+  exit_if(difficulty1)
   while difficulty2 not in ["1","2","3","4","5","q"]:
     difficulty2 = raw_input("\nSorry, I don't understand! "
                       "Please type a number 1-5:\n").lower()
-  quit_if(difficulty2)
+  exit_if(difficulty2)
   difficulty1 = int(difficulty1)
   difficulty2 = int(difficulty2)
   print '\nStarting board:'
@@ -69,7 +70,7 @@ def move(diff1, diff2):
     print "\nGame over! I win!"
     sys.exit()
   elif game_won(board, "Y"):
-    print "\nGame over! You win!"
+    print "\nGame over! Carlisle Wins!"
     sys.exit()
   elif full(board):
     print "\nGame over! It's a tie!"
@@ -98,7 +99,6 @@ def moveAI1(diff1, diff2):
   print "Rondo's move:"
   printBoard()
   move(diff1, diff2)
-  
 
 # sleep if AI too fast, compute optimal move & modify board in memory,
 # print board, call move()
@@ -116,10 +116,11 @@ def moveAI2(diff1, diff2):
 def printBoard():
   for column in range(COLUMNS):
     print str(1 + column),
-  print ''
+  print ""
+
   for row in range(ROWS):
     for column in range(COLUMNS):
       print board[column][ROWS - row - 1],
-    print ''
+    print ""
 
 init()

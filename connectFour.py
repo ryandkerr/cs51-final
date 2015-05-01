@@ -110,7 +110,7 @@ def moveAI():
 
   print "Rondo's move:"
   printBoard()
-  
+
   move()
   
 
@@ -145,7 +145,6 @@ def printBoard():
   for row in range(ROWS):
     for column in range(COLUMNS):
       print board[column][ROWS - row - 1],
-    print ""
-
+    print 
 
 init()
