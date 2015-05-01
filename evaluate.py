@@ -248,10 +248,10 @@ def evaluate(board, state):
     off_threat = threat(board, offstate, 3)
     def_threat = threat(board, defstate, 3)
 
-    if game_won(board, state):
+    if game_won(board, offstate):
         return float("inf")
 
-    elif game_won(board, state):
+    elif game_won(board, defstate):
         return float("-inf")
 
     elif full(board):
