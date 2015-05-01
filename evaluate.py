@@ -21,7 +21,6 @@ def horizontal_threat (board, state, length):
         for x in range(COLUMNS):
             if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
-
                 if (in_row == length):
                     # checks if there is a threatening position
                     if x < COLUMNS - 1 and board[x+1][y] == ".":
@@ -44,8 +43,8 @@ def vertical_threat (board, state, length):
     value = 0
     for x in range(COLUMNS):
         in_row = 0
-
         for y in range(ROWS):
+            if ()
             if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
