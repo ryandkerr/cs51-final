@@ -13,12 +13,16 @@ from board_functions import *
 # proportional to the number of threatening spots the series has. The all have the same functionality
 # as in board_functions.py, but with the added ability to check for the number of threatening locations.
 
+# Given a board, a string signifying the turn, and a length, 
 def horizontal_threat (board, state, length):
     value = 0
     for y in range(ROWS):
         in_row = 0
 
         for x in range(COLUMNS):
+            if x >= COLUMNS - 3 and in_row < 1:
+                break
+
             if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
@@ -44,7 +48,8 @@ def vertical_threat (board, state, length):
     for x in range(COLUMNS):
         in_row = 0
         for y in range(ROWS):
-            if ()
+            if y >= ROWS - 3 and in_row < 1:
+                break
             if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
@@ -61,6 +66,9 @@ def diag_upright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(y < ROWS and x < COLUMNS):
+        if (x >= COLUMNS - 3 or y >= ROWS - 3) and in_row < 1:
+            break
+
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
@@ -84,6 +92,9 @@ def diag_downright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(x < COLUMNS and y >= 0):
+        if (x >= COLUMNS - 3 or y < 3) and in_row < 1:
+            break
+
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
@@ -180,33 +191,14 @@ diag_board3[1][2] = "R"
 diag_board3[2][3] = "R"
 
 
-if (diag_downright_threat(diag_board1, "R", 0, 3, 3) != -45):
+if (diag_downright_threat(diag_board1, "R", 0, 3, 3) != -15):
     print "Failure diagnol downright"
-if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -90):
+if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -30):
     print "Failure diagnol upright" 
 if (diag_upright_threat(diag_board3, "R", 0, 0, 3) != 0):
     print "Failure diagnol upright" 
-if (diagonal_threat (diag_board1, "R", 3) != -45) and (diagonal_threat(diag_board2, "R", 3) != 90):
+if (diagonal_threat (diag_board1, "R", 3) != -15) and (diagonal_threat(diag_board2, "R", 3) != -30):
     print "Failure diagnol function"
-
-# non diag down right threat 
-two_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-two_board[0][2] = "R"
-two_board[1][1] = "R"
-
-# double diag up right threat of -90 
-two_board1 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-two_board1[4][3] = "R"
-two_board1[5][4] = "R"
-#placeholders to show columns are filled
-two_board1[6][4] = "Y"
-two_board1[3][1] = "Y"
-
-if (diagonal_threat(two_board, "R", 2) != 0):
-    print "Failure length 2 diagnol downward"
-
-if (diagonal_threat(two_board1, "R", 2) != -40):
-    print "Failure length 2 diagnol upward"
 
 # Returns a heuristic proportional to the number of threatening positions on the board.
 def threat(board, state, length):
@@ -215,34 +207,40 @@ def threat(board, state, length):
 
 # evaluate takes a board and a player's color and outputs a SCORE based on 
 # how good that board is for max payer. High score means good for max player.
-def evaluate(board):
+def evaluate(board, state):
 
     # we need a way to see if cpu won, player won, or draw
     # right now is_term will return True if draw or if that player won
     
     # here "b" represents the computer/MAX player. If max player has won,
     # we return high score
-    if game_won(board, "R"):
+    offstate = ""
+    defstate =""
+    if state == "R":
+        offstate = state
+        defstate = "Y"
+    else:
+        offstate == state      
+        defstate == "R"
+
+    off_threat = threat(board, offstate, 3)
+    def_threat = threat(board, defstate, 3)
+
+    if game_won(board, offstate):
         return float("inf")
 
-    elif game_won(board, "Y"):
+    elif game_won(board, defstate):
         return float("-inf")
 
     elif full(board):
         return 0
 
     # here we define heuristics for good board
-    elif threat(board, "R",3) != 0:
-        return -1 * threat(board, "R",3)
+    elif off_threat != 0:
+        return -1 * off_threat
 
-    elif threat(board,"Y",3) != 0:
-        return threat(board,"Y",3)
-
-    elif threat(board, "R",2) != 0:
-        return -1 * threat(board, "R",2)
-
-    elif threat(board, "Y",2) != 0:
-        return threat(board,"Y",2) 
+    elif def_threat != 0:
+        return def_threat
 
     else:
         return 5

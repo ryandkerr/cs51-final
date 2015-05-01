@@ -19,7 +19,7 @@ from ab_pruning import *
 from board_functions import *
 
 # declare global variables
-global playersTurn
+global ai2_turn
 global board
 
 # instantiate empty board
@@ -27,9 +27,9 @@ board = [['.'] * 6, ['.'] * 6, ['.'] * 6,
          ['.'] * 6, ['.'] * 6, ['.'] * 6, ['.'] * 6]
 
 # print intro, ask for first player, print starting board,
-# assign to playersTurn, call move()
+# assign to ai2_turn, call move()
 def init():
-  global playersTurn
+  global ai2_turn
   print "\nHello! My name is Rondo. Let's play Connect Four!"
   first = raw_input("You'll be yellow (Y). You can enter 'q' at any prompt "
                     "to quit.\nWould you like to go first? (y/n):\n").lower()
@@ -41,14 +41,14 @@ def init():
   print '\nStarting board:'
   printBoard()
   if first == "n":
-    playersTurn = False
+    ai2_turn = False
   else:
-    playersTurn = True
+    ai2_turn = True
   move()
 
-# check for gameOver, reassign playersTurn, call moveAI or movePlayer
+# check for gameOver, reassign ai2_turn, call moveAI1 or moveAI2
 def move():
-  global playersTurn
+  global ai2_turn
   global board
   for row in range(ROWS):
     for column in range(COLUMNS):
@@ -65,42 +65,33 @@ def move():
   elif full(board):
     print "\nGame over! It's a tie!"
     sys.exit()
-  elif playersTurn:
-    playersTurn = False
-    movePlayer()
+  elif ai2_turn:
+    ai2_turn = False
+    moveAI2()
   else:
-    playersTurn = True
-    moveAI()
+    ai2_turn = True
+    moveAI1()
 
 # sleep(?), assign R to first available cell, print board, call MOVE
-def moveAI():
+def moveAI1():
   global board
   print "\nRondo is thinking...."
-  # time.sleep(1)
-  board = go_next(board, minimax_ab(board, 3), "R")
+  time.sleep(1)
+  board = go_next(board, minimax_ab(board, 3, "R"), "R")
   print "Rondo's move:"
   printBoard()
   move()
   
 
 # take user column input, alter board in memory, print board, call MOVE
-def movePlayer():
-  column = raw_input("\nYour turn! Please choose a column (1-7):\n").lower()
-  if column not in ['q','1','2','3','4','5','6','7']:
-    movePlayer()
-  elif column == 'q':
-    sys.exit()
-  else:
-    column = int(column) - 1
-    for row in range(ROWS):
-      if board[column][row] == ".":
-        board[column][row] = "Y"
-        print "\nYour move:"
-        printBoard()
-        move()
-        break
-    else:
-      movePlayer()
+def moveAI2():
+  global board
+  print "\nCarlisle is thinking...."
+  time.sleep(1)
+  board = go_next(board, minimax_ab(board, 3, "Y"), "Y")
+  print "Rondo's move:"
+  printBoard()
+  move()
 
 # print ASCII board to terminal window
 def printBoard():
