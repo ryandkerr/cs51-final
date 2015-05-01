@@ -126,79 +126,9 @@ def diagonal_threat (board, state, length):
         value += diag_downright_threat(board, state, x, ROWS - 1,  length) 
     return value
 
-# Threat Tests 
-
-# Creates a board with 3 in a row diagonally upright
-verts_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-verts_board[3][0] = "R"
-verts_board[3][1] = "R"
-verts_board[3][2] = "R"
-
-if (vertical_threat(verts_board, "R", 3) != -45):
-    print "Failure vertictal threat"
-
-# threat of -45 horizontally
-horz_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-horz_board[0][2] = "R"
-horz_board[1][2] = "R"
-horz_board[2][2] = "R"
-# placeholder so that test knows column is filled up 
-horz_board[3][1] = "Y"
-
-#second horizontal index outbounds test with no placeholder
-horz_board2 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-horz_board2[1][0] = "R"
-horz_board2[2][0] = "R"
-horz_board2[3][0] = "R"
-
-#second horizontal index outbounds test with no placeholder
-horz_board3 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-horz_board3[4][0] = "R"
-horz_board3[5][0] = "R"
-horz_board3[6][0] = "R"
-
-if (horizontal_threat(horz_board, "R", 3) != -45):
-    print "Failure for horizantal threat"
-if (horizontal_threat(horz_board2, "R", 3) != -90):
-    print "Failure for horizantal1 index_outbounds"
-if (horizontal_threat(horz_board3, "R", 3) != -45):
-    print "Failure for horizantal2 index_outbounds"
 
 
 
-
-# Creates a board with 3 in a row diagonally downright without placeholder
-diag_board1 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-diag_board1[0][3] = "R"
-diag_board1[1][2] = "R"
-diag_board1[2][1] = "R"
-
-# no need for placeholder to fill column 
-
-# Creates a board with 3 in a row diagnally upright
-diag_board2 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-diag_board2[1][1] = "R"
-diag_board2[2][2] = "R"
-diag_board2[3][3] = "R"
-
-#placeholder to signal column filled
-diag_board2[4][3] = "Y"
-
-# Creates a board with 3 in a row diagnally upright
-diag_board3 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
-diag_board3[0][1] = "R"
-diag_board3[1][2] = "R"
-diag_board3[2][3] = "R"
-
-
-if (diag_downright_threat(diag_board1, "R", 0, 3, 3) != -15):
-    print "Failure diagnol downright"
-if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -30):
-    print "Failure diagnol upright" 
-if (diag_upright_threat(diag_board3, "R", 0, 0, 3) != 0):
-    print "Failure diagnol upright" 
-if (diagonal_threat (diag_board1, "R", 3) != -15) and (diagonal_threat(diag_board2, "R", 3) != -30):
-    print "Failure diagnol function"
 
 # Returns a heuristic proportional to the number of threatening positions on the board.
 def threat(board, state, length):
