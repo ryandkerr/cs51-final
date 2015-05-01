@@ -19,51 +19,36 @@ from ab_pruning import *
 from board_functions import *
 
 # declare global variables
-global playersTurn
+global ai2_turn
 global board
-global difficulty
 
 # instantiate empty board
 board = [['.'] * 6, ['.'] * 6, ['.'] * 6,
          ['.'] * 6, ['.'] * 6, ['.'] * 6, ['.'] * 6]
 
-# helper function for quitting if the user wants to
-def quit_if(user_input):
-  if user_input == "q":
-    sys.exit()
-
 # print intro, ask for first player, print starting board,
-# assign to playersTurn, call move()
+# assign to ai2_turn, call move()
 def init():
-  global playersTurn
-  global difficulty
+  global ai2_turn
   print "\nHello! My name is Rondo. Let's play Connect Four!"
   first = raw_input("You'll be yellow (Y). You can enter 'q' at any prompt "
                     "to quit.\nWould you like to go first? (y/n):\n").lower()
   while (first != "y") & (first != "n") & (first != "q"):
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
-  quit_if(first)
-  difficulty = raw_input("\nI'm pretty good at this, so you might want me to go"
-                    " easy. \nPlease choose a difficulty from 1 (easiest) to 5 "
-                    "(hardest).\nFair warning: when I play hard, my turns take "
-                    "a while.\n").lower()
-  while difficulty not in ["1","2","3","4","5","q"]:
-    difficulty = raw_input("\nSorry, I don't understand! Please"
-                      " type '1', '2', '3', '4', or '5'.\n").lower()
-  quit_if(difficulty)
-  difficulty = int(difficulty)
+  if first == 'q':
+    sys.exit()
   print '\nStarting board:'
   printBoard()
   if first == "n":
-    playersTurn = False
+    ai2_turn = False
   else:
-    playersTurn = True
+    ai2_turn = True
   move()
 
-# check for gameOver, reassign playersTurn, call moveAI or movePlayer
+# check for gameOver, reassign ai2_turn, call moveAI1 or moveAI2
 def move():
-  global playersTurn
+  global ai2_turn
   global board
   for row in range(ROWS):
     for column in range(COLUMNS):
@@ -80,46 +65,33 @@ def move():
   elif full(board):
     print "\nGame over! It's a tie!"
     sys.exit()
-  elif playersTurn:
-    playersTurn = False
-    movePlayer()
+  elif ai2_turn:
+    ai2_turn = False
+    moveAI2()
   else:
-    playersTurn = True
-    moveAI()
+    ai2_turn = True
+    moveAI1()
 
-# sleep if easy, assign R to first available cell, print board, call MOVE
-def moveAI():
+# sleep(?), assign R to first available cell, print board, call MOVE
+def moveAI1():
   global board
   print "\nRondo is thinking...."
-<<<<<<< HEAD
-  if difficulty < 3:
-    time.sleep(1)
-  board = go_next(board, minimax_ab(board, difficulty, "R"), "R")
-=======
-  # time.sleep(1)
-  board = go_next(board, minimax_ab(board, 3), "R")
->>>>>>> cb44b79171cff7f616d3fe5d958d740b395ec325
+  time.sleep(1)
+  board = go_next(board, minimax_ab(board, 3, "R"), "R")
   print "Rondo's move:"
   printBoard()
   move()
   
+
 # take user column input, alter board in memory, print board, call MOVE
-def movePlayer():
-  column = raw_input("\nYour turn! Please choose a column (1-7):\n").lower()
-  quit_if(column)
-  if column not in ['q','1','2','3','4','5','6','7']:
-    movePlayer()
-  else:
-    column = int(column) - 1
-    for row in range(ROWS):
-      if board[column][row] == ".":
-        board[column][row] = "Y"
-        print "\nYour move:"
-        printBoard()
-        move()
-        break
-    else:
-      movePlayer()
+def moveAI2():
+  global board
+  print "\nCarlisle is thinking...."
+  time.sleep(1)
+  board = go_next(board, minimax_ab(board, 3, "Y"), "Y")
+  print "Rondo's move:"
+  printBoard()
+  move()
 
 # print ASCII board to terminal window
 def printBoard():
