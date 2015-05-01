@@ -22,7 +22,6 @@ def horizontal_threat (board, state, length):
     value = 0
     for y in range(ROWS):
         in_row = 0
-
         for x in range(COLUMNS):
             if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
@@ -33,11 +32,11 @@ def horizontal_threat (board, state, length):
                         # checks if position below threatening position is 
                         # empty
                         if y == 0 or board[x+1][y-1] != ".":
-                            value = value - (15)
-
+                            value = value - 15
                     if x >= length and board[x-length][y] == ".":
                         if y == 0 or board[x-length][y-1] != ".":
-                            value = value - (15)
+                            value = value - 15
+
                     return value
 
             else:
@@ -59,9 +58,8 @@ def vertical_threat (board, state, length):
                 in_row = in_row + 1
                 if (in_row == length):
                     if y < ROWS - 1 and board[x][y+1] == ".":
-                        value = value - (15)
+                        value = value - 15
                     return value
-
             else:
                 in_row = 0
 
@@ -74,21 +72,19 @@ def diag_upright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(y < ROWS and x < COLUMNS):
-
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
                 if (x < COLUMNS - 1 and y < ROWS - 1 and 
                     board[x+1][y+1] == "." and board[x+1][y] != "."):
 
-                    value = value - (15)
+                    value = value - 15
 
                 if (x >= length and y >= length and 
                     board[x-length][y-length] == '.'):
 
                     if y == length or board[x-length][y-length-1] != ".":
-                        value = value - (15)
-
+                        value = value - 15
                 return value
             x = x + 1
             y = y + 1
@@ -107,7 +103,10 @@ def diag_downright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(x < COLUMNS and y >= 0):
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6daf6942f94ff3e6210c2daa658f8c37549370bc
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
             if(in_row == length):
@@ -115,10 +114,10 @@ def diag_downright_threat (board, state,x,y, length):
                     board[x-length][y+length] == "." and 
                     board[x-length][y+length-1] != "."):
 
-                    value = value - (15)
+                    value = value - 15
                 if x < COLUMNS - 1 and y > 0 and board[x+1][y-1] == '.':
                     if y == 1 or board[x+1][y-2] != ".":
-                        value = value - (15)
+                        value = value - 15
                 return value
             x = x + 1
             y = y - 1
@@ -144,6 +143,7 @@ def diagonal_threat (board, state, length):
     for x in range(COLUMNS - 3):
         value += diag_downright_threat(board, state, x, ROWS - 1,  length) 
     return value
+
 
 # Returns a heuristic proportional to the number of threatening positions 
 # on the board. Calls upon each of the threat functions above to check
@@ -183,10 +183,15 @@ def evaluate(board, state):
 
     # here we define heuristics for good board
     elif off_threat != 0:
-        return -1 * off_threat
-
+        if off_threat == -30:
+            return float("-inf")
+        else:
+            return -1 * off_threat
     elif def_threat != 0:
-        return def_threat
+        if def_threat == -30:
+            return float("-inf")
+        else: 
+            return def_threat
 
     elif full(board):
         return 0

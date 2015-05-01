@@ -94,7 +94,7 @@ verts_board[3][0] = "R"
 verts_board[3][1] = "R"
 verts_board[3][2] = "R"
 
-if (vertical_threat(verts_board, "R", 3) != -45):
+if (vertical_threat(verts_board, "R", 3) != -15):
     print "Failure vertictal threat"
 
 # threat of -45 horizontally
@@ -117,11 +117,12 @@ horz_board3[4][0] = "R"
 horz_board3[5][0] = "R"
 horz_board3[6][0] = "R"
 
-if (horizontal_threat(horz_board, "R", 3) != -45):
+
+if (horizontal_threat(horz_board, "R", 3) != -15):
     print "Failure for horizontal threat"
-if (horizontal_threat(horz_board2, "R", 3) != -90):
+if (horizontal_threat(horz_board2, "R", 3) != -30):
     print "Failure for horizontal1 index_outbounds"
-if (horizontal_threat(horz_board3, "R", 3) != -45):
+if (horizontal_threat(horz_board3, "R", 3) != -15):
     print "Failure for horizontal2 index_outbounds"
 
 
@@ -157,6 +158,7 @@ if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -30):
     print "Failure diagnol upright" 
 if (diag_upright_threat(diag_board3, "R", 0, 0, 3) != 0):
     print "Failure diagnol upright" 
-if (diagonal_threat (diag_board1, "R", 3) != -15) and 
-	(diagonal_threat(diag_board2, "R", 3) != -30):
+if ((diagonal_threat (diag_board1, "R", 3) != -15) and 
+    (diagonal_threat(diag_board2, "R", 3) != -30)):
     print "Failure diagnol function"
+
