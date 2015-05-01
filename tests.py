@@ -48,7 +48,8 @@ diag2_board[1][3] = "R"
 diag2_board[2][2] = "R"
 diag2_board[3][1] = "R"
 
-# Creates a board into which we will call go_next and insert a piece of the same state
+# Creates a board into which we will call go_next and insert a piece 
+# of the same state
 insert_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 insert_board[0][0] = "R"
 insert_board[1][0] = "R"
@@ -156,5 +157,6 @@ if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -30):
     print "Failure diagnol upright" 
 if (diag_upright_threat(diag_board3, "R", 0, 0, 3) != 0):
     print "Failure diagnol upright" 
-if (diagonal_threat (diag_board1, "R", 3) != -15) and (diagonal_threat(diag_board2, "R", 3) != -30):
+if (diagonal_threat (diag_board1, "R", 3) != -15) and 
+	(diagonal_threat(diag_board2, "R", 3) != -30):
     print "Failure diagnol function"
