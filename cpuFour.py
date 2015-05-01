@@ -4,11 +4,6 @@
 # Evan Sandhoefner, Ryan Kerr, Milan Ravenell, Matthew Tesfalul
 # run by typing "python connectfour.py" at command line
 
-# to be implemented:
-# easy/med/hard modes
-# consistent ''/""
-# abstraction/factoring/etc
-
 # import external modules
 import time
 import sys
@@ -23,8 +18,7 @@ global ai2_turn
 global board
 
 # instantiate empty board
-board = [['.'] * 6, ['.'] * 6, ['.'] * 6,
-         ['.'] * 6, ['.'] * 6, ['.'] * 6, ['.'] * 6]
+board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 
 def quit_if(user_input):
   if user_input == "q":
