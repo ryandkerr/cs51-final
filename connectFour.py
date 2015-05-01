@@ -21,7 +21,7 @@ from board_functions import *
 # declare global variables
 global playersTurn
 global board
-global depth
+global difficulty
 
 # instantiate empty board
 board = [['.'] * 6, ['.'] * 6, ['.'] * 6,
@@ -36,7 +36,7 @@ def quit_if(user_input):
 # assign to playersTurn, call move()
 def init():
   global playersTurn
-  global depth
+  global difficulty
   print "\nHello! My name is Rondo. Let's play Connect Four!"
   first = raw_input("You'll be yellow (Y). You can enter 'q' at any prompt "
                     "to quit.\nWould you like to go first? (y/n):\n").lower()
@@ -44,15 +44,15 @@ def init():
     first = raw_input("\nSorry, I don't understand! "
                       "Please type 'y' or 'n':\n").lower()
   quit_if(first)
-  depth = raw_input("\nI'm pretty good at this, so you might want me to go "
+  difficulty = raw_input("\nI'm pretty good at this, so you might want me to go "
                     "easy. \nPlease choose a difficulty from 1 (easiest) to 5 "
                     "(hardest).\nFair warning: when I play hard, my turns take "
                     "a while.\n").lower()
-  while depth not in ["1","2","3","4","5","q"]:
-    depth = raw_input("\nSorry, I don't understand! Please"
+  while difficulty not in ["1","2","3","4","5","q"]:
+    difficulty = raw_input("\nSorry, I don't understand! Please"
                       " type '1', '2', '3', '4', or '5'.\n").lower()
-  quit_if(depth)
-  depth = int(depth)
+  quit_if(difficulty)
+  difficulty = int(difficulty)
   print '\nStarting board:'
   printBoard()
   if first == "n":
@@ -91,9 +91,9 @@ def move():
 def moveAI():
   global board
   print "\nRondo is thinking...."
-  if depth < 3:
+  if difficulty < 3:
     time.sleep(1)
-  board = go_next(board, minimax_ab(board, depth), "R")
+  board = go_next(board, minimax_ab(board, difficulty, "R"), "R")
   print "Rondo's move:"
   printBoard()
   move()
