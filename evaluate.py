@@ -107,10 +107,6 @@ def diag_downright_threat (board, state,x,y, length):
 
 def diagonal_threat (board, state, length):
     value = 0
-    # for x in range(COLUMNS):
-    #     for y in range(ROWS):
-    #         value = value + diag_upright_threat(board, state, x, y, length) + diag_downright_threat(board, state, x, y, length)
-    # return value
     for y in range(ROWS - 3):
         value += diag_upright_threat(board, state, 0, y, length)
     for x in range(COLUMNS - 3):
@@ -129,10 +125,10 @@ verts_board[3][0] = "R"
 verts_board[3][1] = "R"
 verts_board[3][2] = "R"
 
-if (vertical_threat(verts_board, "R", 3) != -15):
+if (vertical_threat(verts_board, "R", 3) != -45):
     print "Failure vertictal threat"
 
-# threat of -15 horizontally
+# threat of -45 horizontally
 horz_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 horz_board[0][2] = "R"
 horz_board[1][2] = "R"
@@ -152,11 +148,11 @@ horz_board3[4][0] = "R"
 horz_board3[5][0] = "R"
 horz_board3[6][0] = "R"
 
-if (horizontal_threat(horz_board, "R", 3) != -15):
+if (horizontal_threat(horz_board, "R", 3) != -45):
     print "Failure for horizantal threat"
-if (horizontal_threat(horz_board2, "R", 3) != -30):
+if (horizontal_threat(horz_board2, "R", 3) != -90):
     print "Failure for horizantal1 index_outbounds"
-if (horizontal_threat(horz_board3, "R", 3) != -15):
+if (horizontal_threat(horz_board3, "R", 3) != -45):
     print "Failure for horizantal2 index_outbounds"
 
 
@@ -186,13 +182,13 @@ diag_board3[1][2] = "R"
 diag_board3[2][3] = "R"
 
 
-if (diag_downright_threat(diag_board1, "R", 0, 3, 3) != -15):
+if (diag_downright_threat(diag_board1, "R", 0, 3, 3) != -45):
     print "Failure diagnol downright"
-if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -30):
+if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -90):
     print "Failure diagnol upright" 
 if (diag_upright_threat(diag_board3, "R", 0, 0, 3) != 0):
     print "Failure diagnol upright" 
-if (diagonal_threat (diag_board1, "R", 3) != -15) and (diagonal_threat(diag_board2, "R", 3) != 30):
+if (diagonal_threat (diag_board1, "R", 3) != -45) and (diagonal_threat(diag_board2, "R", 3) != 90):
     print "Failure diagnol function"
 
 # non diag down right threat 
@@ -200,7 +196,7 @@ two_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 two_board[0][2] = "R"
 two_board[1][1] = "R"
 
-# double diag up right threat of -30 
+# double diag up right threat of -90 
 two_board1 = [["." for y in range(ROWS)] for x in range(COLUMNS)]
 two_board1[4][3] = "R"
 two_board1[5][4] = "R"
@@ -211,7 +207,7 @@ two_board1[3][1] = "Y"
 if (diagonal_threat(two_board, "R", 2) != 0):
     print "Failure length 2 diagnol downward"
 
-if (diagonal_threat(two_board1, "R", 2) != -20):
+if (diagonal_threat(two_board1, "R", 2) != -40):
     print "Failure length 2 diagnol upward"
 
 # Returns a heuristic proportional to the number of threatening positions on the board.
