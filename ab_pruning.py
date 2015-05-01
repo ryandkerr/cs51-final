@@ -33,7 +33,8 @@ def minimax_ab(board, depth, state):
     new_board = go_next(board, move, state)
 
     # call min on that new board
-    board_score = min_ab(new_board, depth - 1, alpha, beta, state, opp_state) - abs(move - 3)
+    board_score = (min_ab(new_board, depth - 1, alpha, beta, state, opp_state)
+                   - abs(move - 3))
 
     if board_score > best_score:
       best_score = board_score
@@ -46,14 +47,15 @@ def minimax_ab(board, depth, state):
 # AB PRUNING MIN AND MAX PLAYER MOVES HERE
 #####
 
-# min_ab takes in a board array, depth int, alpha score and beta score
+# min_ab takes in a board array, depth int, alpha score, beta score, own
+#   piece string and opponent piece string
 # min_ab returns the minimum SCORE for that node 
-# Example usage: min_ab(board, 3, -inf, inf)
+# Example usage: min_ab(board, 3, -inf, inf, "R", "Y")
 def min_ab(board, depth, a, b, state, opp_state):
   if is_terminal(board, state):
   
-    # this needs to say wether the terminal state is a draw, win, loss
-    return evaluate(board, state)
+      # assigns score to board
+      return evaluate(board, state)
 
   else:
     next_moves = possible_moves(board) 
@@ -79,13 +81,15 @@ def min_ab(board, depth, a, b, state, opp_state):
     return beta
 
 
-# max_ab takes in a board array, depth int, alpha score and beta score
+# max_ab takes in a board array, depth int, alpha score, own
+#   piece string and opponent piece string
 # max_ab returns the maximum SCORE for that node
 # Example usage:  max_ab(board, 3, -inf, inf)
 def max_ab(board, depth, a, b, state, opp_state):
   # check to see if game over
   if is_terminal(board, opp_state):
-    # this needs to say wether the terminal state is a draw, win, loss
+
+    # assigns score to board
     return evaluate(board, state)
 
   else:
