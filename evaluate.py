@@ -24,9 +24,6 @@ def horizontal_threat (board, state, length):
         in_row = 0
 
         for x in range(COLUMNS):
-            if x >= COLUMNS - 3 and in_row < 1:
-                break
-
             if (board[x][y] == state or board[x][y] == state.lower()):
                 in_row = in_row + 1
                 if (in_row == length):
@@ -77,8 +74,6 @@ def diag_upright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(y < ROWS and x < COLUMNS):
-        if (x >= COLUMNS - 3 or y >= ROWS - 3) and in_row < 1:
-            break
 
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
@@ -112,8 +107,6 @@ def diag_downright_threat (board, state,x,y, length):
     value = 0
     in_row = 0
     while(x < COLUMNS and y >= 0):
-        if (x >= COLUMNS - 3 or y < 3) and in_row < 1:
-            break
 
         if (board[x][y] == state or board[x][y] == state.lower()):
             in_row = in_row + 1
@@ -156,9 +149,9 @@ def diagonal_threat (board, state, length):
 # on the board. Calls upon each of the threat functions above to check
 # every possible combination,
 def threat(board, state, length):
-    return horizontal_threat(board, state, length) + \
-        vertical_threat(board, state, length) + \
-        diagonal_threat(board, state, length)
+    return (horizontal_threat(board, state, length) + 
+        vertical_threat(board, state, length) + 
+        diagonal_threat(board, state, length))
 
 
 # evaluate takes a board and a player's color and outputs a SCORE based on 
