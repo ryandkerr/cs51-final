@@ -1,2 +1,2 @@
-title: Your Project Title
-seas-usernames: evansandhoefner, mravenell, ryankerr, mtesfalul
+title: Connect Four MiniMax AI with AlphaBeta Pruning
+seas-usernames: evansandhoefner, mravenell, ryankerr, matthewtesfalul
