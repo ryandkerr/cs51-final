@@ -187,11 +187,11 @@ horz_board3[5][0] = "R"
 horz_board3[6][0] = "R"
 
 if (horizontal_threat(horz_board, "R", 3) != -45):
-    print "Failure for horizantal threat"
+    print "Failure for horizontal threat"
 if (horizontal_threat(horz_board2, "R", 3) != -90):
-    print "Failure for horizantal1 index_outbounds"
+    print "Failure for horizontal1 index_outbounds"
 if (horizontal_threat(horz_board3, "R", 3) != -45):
-    print "Failure for horizantal2 index_outbounds"
+    print "Failure for horizontal2 index_outbounds"
 
 
 
@@ -221,14 +221,20 @@ diag_board3[2][3] = "R"
 
 
 if (diag_downright_threat(diag_board1, "R", 0, 3, 3) != -45):
-    print "Failure diagnol downright"
+    print "Failure diagonal downright"
 if (diag_upright_threat(diag_board2, "R", 0, 0, 3) != -90):
-    print "Failure diagnol upright" 
+    print "Failure diagonal upright" 
 if (diag_upright_threat(diag_board3, "R", 0, 0, 3) != 0):
+<<<<<<< HEAD
     print "Failure diagnol upright" 
 if (diagonal_threat (diag_board1, "R", 3) != -45) and \
     (diagonal_threat(diag_board2, "R", 3) != 90):
     print "Failure diagnol function"
+=======
+    print "Failure diagonal upright" 
+if (diagonal_threat (diag_board1, "R", 3) != -45) and (diagonal_threat(diag_board2, "R", 3) != 90):
+    print "Failure diagonal function"
+>>>>>>> bb1aca9147c0ffb720ebb0e710b830c72a45832a
 
 # non diag down right threat 
 two_board = [["." for y in range(ROWS)] for x in range(COLUMNS)]
@@ -244,10 +250,10 @@ two_board1[6][4] = "Y"
 two_board1[3][1] = "Y"
 
 if (diagonal_threat(two_board, "R", 2) != 0):
-    print "Failure length 2 diagnol downward"
+    print "Failure length 2 diagonal downward"
 
 if (diagonal_threat(two_board1, "R", 2) != -40):
-    print "Failure length 2 diagnol upward"
+    print "Failure length 2 diagonal upward"
 
 # Returns a heuristic proportional to the number of threatening positions 
 # on the board. Calls upon each of the threat functions above to check
