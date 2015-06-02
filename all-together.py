@@ -1,20 +1,28 @@
-# connectFour.py
-# Connect Four MiniMax AI
-# CS 51 Final Project
+# all-together.py
+# Connect Four MiniMax AI with AlphaBeta Pruning: INTERACTIVE GAME
+# Harvard CS 51 Final Project
 # Evan Sandhoefner, Ryan Kerr, Milan Ravenell, Matthew Tesfalul
-# run by typing "python connectfour.py" at command line
+
+"""
+Not configured for web use! If you have Python on your machine, you can download this self-contained file (no
+dependencies) and run it as you would any .py file. If you want to install Python, you can try these instructions:
+
+https://wiki.python.org/moin/BeginnersGuide/Download
+
+...but that might be an involved process if you only want Python for this program. In that case, there are quite a
+few online Python interpreters you can try. We've had the most luck with:
+
+http://www.tutorialspoint.com/execute_python_online.php
+
+...but it's not perfect.
+Good luck! Hope you enjoy!
+"""
 
 # import external modules
 import time
 import sys
 
-# evaluate.py
-# Connect Four MiniMax AI
-# Ryan Kerr, Milan Ravenell, Matt Tesfalul, Evan Sahdhoefner
-# CS51 final project
-# file that holds the evaluate function
-
-
+# evaluate
 
 # Checks to see if there are a series of pieces in a row of a given state 
 # for a given length. If there are that many in a row, it checks to see if 
@@ -215,13 +223,8 @@ def evaluate(board, state):
 
     else:
         return 5
-# ab_pruning.py
-# Connect Four MiniMax AI
-# Ryan Kerr, Milan Ravenell, Matt Tesfalul, Evan Sahdhoefner
-# CS51 final project
-# Minimax algorithm using alpha-beta pruning
 
-
+# ab_pruning
 
 # minimax_ab takes a board array, depth int, player string as arguments
 # minimax_ab returns the best MOVE int
@@ -330,11 +333,8 @@ def max_ab(board, depth, a, b, state, opp_state):
         alpha = board_score
 
     return alpha
-# board_functions.py
-# Connect Four MiniMax AI
-# Ryan Kerr, Milan Ravenell, Matt Tesfalul, Evan Sahdhoefner
-# CS51 final project
-# file holds all functions related to the board
+
+# board_functions
 
 # globals
 COLUMNS = 7
